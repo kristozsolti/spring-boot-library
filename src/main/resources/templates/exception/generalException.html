@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hu"	layout:decorate="~{layouts/header}">
+<head>
+
+</head>
+<body>
+		
+	<div layout:fragment="pageContent">
+		<article>
+	        <header>
+	            <h1 th:text="${exception}">Ez itt a gond</h1> 
+	        </header>
+    
+	 	    <section >
+	            <p th:text="${exception}">Ez az üzenet.</p>
+	        </section>
+	        
+    	</article>
+    
+	</div>
+
+</body>
+</html>

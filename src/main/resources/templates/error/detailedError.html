@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu"	layout:decorate="~{layouts/header}">
+<head>
+
+</head>
+<body>
+		
+	<div layout:fragment="pageContent">
+		<article>
+	        <header>
+	            <h1 th:text="${error}">Ez itt a gond</h1> 
+	        </header>
+    
+	 	    <section >
+	            <p th:text="${message}">Ez az üzenet.</p>
+	            <p th:text="${path}">Elérési út.</p>
+	            <p th:text="${status}">Státusz</p>
+	            <p th:text="${timestamp}">Időpont</p>
+	        </section>
+	        
+    	</article>
+    
+	</div>
+
+</body>
+</html>
