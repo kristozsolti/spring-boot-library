@@ -8,4 +8,6 @@ public interface IAuthorService {
 
 	public List<Author> getAllAuthors();
 
+	public Author getAuthorById(String authorId);
+
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu"	layout:decorate="~{layouts/header}">
+<head>
+
+</head>
+<body>
+
+	<div layout:fragment="cardHeader">
+		<i class="fas fa-chalkboard-teacher"></i> Author Details
+	</div>
+		
+	<div layout:fragment="pageContent">
+		<div class="card border-success">
+			<div class="card-body row">
+				<div class="col-sm-4">
+					<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%"/>
+				</div>
+				<div class="col-sm-8">
+				  	<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+				  	<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of birth</h6>
+					<p class="card-text" th:text="${author.bio}">Short book description. </p>
+				</div>
+			</div>
+		  </div>
+	</div>
+	
+	<div layout:fragment="cardFooter">
+		<a th:href="@{/authors}" class="card-link">
+			<i class="fas fa-chevron-circle-left"></i> Back to authors
+		</a>
+	</div>
+
+</body>
+</html>

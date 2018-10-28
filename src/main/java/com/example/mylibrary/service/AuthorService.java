@@ -16,8 +16,15 @@ public class AuthorService implements IAuthorService {
 	}
 	private AuthorRepository authorRepo;
 	
+	@Override
 	public List<Author> getAllAuthors() {
 		return authorRepo.findAll();
+	}
+
+	@Override
+	public Author getAuthorById(String authorId) {
+		Long id = Long.parseLong(authorId);
+		return authorRepo.findById(id).get();
 	}
 
 }
