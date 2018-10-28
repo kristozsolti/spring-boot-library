@@ -5,8 +5,36 @@
 </head>
 <body>
 		
+	<div layout:fragment="cardHeader">
+		<i class="fas fa-chalkboard-teacher"></i> Authors
+	</div>
+		
 	<div layout:fragment="pageContent">
-		<h5>Authors</h5>
+		
+		<div class="row">
+			<div class="col-sm-4" th:each="author : ${authors}">
+			  <div class="card border-success">
+				<div class="card-body row">
+					<div class="col-sm-4">
+						<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%"/>
+					</div>
+					<div class="col-sm-8">
+					  	<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+					  	<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of birth</h6>
+						<!-- Show only the first 100 characters of the author's biography -->
+						<p class="card-text" th:text="${#strings.substring(author.bio, 0, 99)}">Short book description. </p>
+						...
+					</div>
+				</div>
+				<div class="card-footer">
+					<a th:href="@{/authors/{authorId}(authorId=${author.id})}" class="card-link">
+						<i class="fas fa-chevron-circle-right"></i> View details
+					</a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
 	</div>
 
 </body>
