@@ -21,4 +21,10 @@ public class BookService implements IBookService {
 		return bookRepo.findAll();
 	}
 
+	@Override
+	public Book getBookById(String bookId) {
+		Long id = Long.parseLong(bookId);
+		return bookRepo.findById(id).get();
+	}
+
 }

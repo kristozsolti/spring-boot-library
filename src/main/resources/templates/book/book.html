@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hu" layout:decorate="~{layouts/header}">
+
+<head>
+	<!-- BOOK.CSS -->
+	<link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+
+	<div layout:fragment="cardHeader">
+		<i class="fas fa-book-open"></i> Book Details
+	</div>
+
+	<div layout:fragment="pageContent">
+		<div class="card border-success">
+			<div class="card-body row">
+				<div class="col-sm-4">
+					<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
+				</div>
+				<div class="col-sm-8">
+					<h4 class="card-title" th:text="${book.title}">Book Title</h4>
+					<h5 class="card-subtitle mb-2" th:text="${book.author.name}">Book Author name</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						<span th:text="${book.publicatedBy}">Publicated By</span> -
+						<span th:text="${book.publicationYear}">Publicated In</span>
+					</h6>
+					<hr />
+					<div class="book-information row">
+						<div class="col-sm-4 stars-container">
+						<span>Rating:</span> 
+							<div class="crop" th:style="'width:' + ${book.rating * 106 / 5} + 'px;'">
+								<div style="width: 106px">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</div>
+							</div>
+							-
+							<span class="badge badge-pill badge-success" th:text="${book.rating}">Rating</span>
+						</div>
+						<div class="col-sm-4">ISBN: <span th:text="${book.isbn}">ISBN</span></div>
+						<div class="col-sm-4">Pages: <span th:text="${book.numberOfPages}">Number of pages</span></div>
+					</div>
+					<hr />
+					<p class="card-text" th:text="${book.description}">Short book description. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div layout:fragment="cardFooter">
+		<a th:href="@{/books}" class="card-link">
+			<i class="fas fa-chevron-circle-left"></i> Back to books
+		</a>
+	</div>
+
+</body>
+
+</html>

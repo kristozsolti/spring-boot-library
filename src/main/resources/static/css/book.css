@@ -1,0 +1,13 @@
+.book-information .stars-container{
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+.badge {
+	padding: 0.5em;
+}
+
+.crop {
+  overflow: hidden;
+  color: #28a745;
+}
