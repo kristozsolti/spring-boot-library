@@ -21,8 +21,9 @@ public class BookService implements IBookService {
 
 	@Override
 	public List<Book> getAllBooks() {
-		log.info("GET ALL BOOKS.");
-		return bookRepo.findAll();
+		List<Book> books = bookRepo.findAll();
+		log.info("GET ALL BOOKS. FOUND -> " + books.size());
+		return books;
 	}
 
 	@Override
@@ -31,6 +32,13 @@ public class BookService implements IBookService {
 		Book book = bookRepo.findById(id).get();
 		log.info("GET BOOK -> " + book.toString());
 		return book;
+	}
+
+	@Override
+	public List<Book> getBooksByTitle(String bookTitle) {
+		List<Book> booksFound = bookRepo.findAllByTitleContainingIgnoreCase(bookTitle);
+		log.info("SEARCH BOOKS WITH TITLE -> " + bookTitle + " FOUND " + booksFound.size());
+		return booksFound;
 	}
 
 }

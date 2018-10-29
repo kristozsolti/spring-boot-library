@@ -9,5 +9,7 @@ public interface IBookService {
 	public List<Book> getAllBooks();
 
 	public Book getBookById(String bookId);
+
+	public List<Book> getBooksByTitle(String bookTitle);
 	
 }

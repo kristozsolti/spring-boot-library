@@ -11,5 +11,7 @@ import com.example.mylibrary.entity.Book;
 public interface BookRepository extends CrudRepository<Book, Long>{
 
 	public List<Book> findAll();
+
+	public List<Book> findAllByTitleContainingIgnoreCase(String bookTitle);
 	
 }
