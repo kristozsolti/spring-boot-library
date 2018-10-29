@@ -2,7 +2,7 @@
 <html lang="hu" layout:decorate="~{layouts/main}">
 
 <head>
-
+	<link rel="stylesheet" href="/css/books.css">
 </head>
 
 <body>
@@ -11,7 +11,8 @@
 
 		<div>
 			<form class="form-inline my-2 my-lg-0" th:action="@{/books/search}" th:method="get">
-				<input class="form-control mr-sm-2" name="bookTitle" th:value="${searchValue}" type="search" placeholder="Enter book title" aria-label="Search">
+				<input class="form-control mr-sm-2" name="bookTitle" th:value="${searchValue}" type="search" placeholder="Enter book title"
+				 aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i> Search
 				</button>
@@ -20,7 +21,7 @@
 				</a>
 			</form>
 		</div>
-		<hr/>
+		<hr />
 
 	</div>
 
@@ -30,32 +31,34 @@
 
 	<div layout:fragment="pageContent">
 
-		<div class="row">
-			<div class="col-sm-4" th:each="book : ${books}">
-				<div class="card border-primary">
-					<div class="card-body row">
-						<div class="col-sm-4">
-							<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
-						</div>
-						<div class="col-sm-8">
-							<h5 class="card-title" th:text="${book.title}">Book Title</h5>
-							<h6 class="card-subtitle mb-2" th:text="${book.author.name}">Book Author name</h6>
-							<h6 class="card-subtitle mb-2 text-muted">
-								<span th:text="${book.publicatedBy}">Publicated By</span> -
-								<span th:text="${book.publicationYear}">Publicated In</span>
-							</h6>
-							<!-- Show only the first 150 characters of the book's description -->
-							<p class="card-text" th:text="${#strings.substring(book.description, 0, 149)}">Short book description. </p>
-							...
-						</div>
+		<div class="card-deck">
+
+			<div class="card border-primary" th:each="book : ${books}">
+				<div class="card-body row">
+					<div class="col-sm-4">
+						<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
 					</div>
-					<div class="card-footer">
-						<a th:href="@{/books/{bookId}(bookId=${book.id})}" class="card-link">
-							<i class="fas fa-chevron-circle-right"></i> View details
-						</a>
+					<div class="col-sm-8">
+						<h5 class="card-title" th:text="${book.title}">Book Title</h5>
+						<hr/>
+						<h6 class="card-subtitle mb-2" th:text="${book.author.name}">Book Author name</h6>
+						<h6 class="card-subtitle mb-2 text-muted">
+							<span th:text="${book.publicatedBy}">Publicated By</span> -
+							<span th:text="${book.publicationYear}">Publicated In</span>
+						</h6>
+						<hr/>
+						<!-- Show only the first 150 characters of the book's description -->
+						<p class="card-text" th:text="${#strings.substring(book.description, 0, 149)}">Short book description. </p>
+						...
 					</div>
 				</div>
+				<div class="card-footer">
+					<a th:href="@{/books/{bookId}(bookId=${book.id})}" class="card-link">
+						<i class="fas fa-chevron-circle-right"></i> View details
+					</a>
+				</div>
 			</div>
+
 		</div>
 
 	</div>

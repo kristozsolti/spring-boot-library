@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="hu"	layout:decorate="~{layouts/main}">
-<head>
+<html lang="hu" layout:decorate="~{layouts/main}">
 
+<head>
+	<link rel="stylesheet" href="/css/authors.css">
 </head>
+
 <body>
-		
+
 	<div layout:fragment="aboveContent">
 
 		<div>
 			<form class="form-inline my-2 my-lg-0" th:action="@{/authors/search}" th:method="get">
-				<input class="form-control mr-sm-2" name="authorName" th:value="${searchValue}" type="search" placeholder="Enter author name" aria-label="Search">
+				<input class="form-control mr-sm-2" name="authorName" th:value="${searchValue}" type="search" placeholder="Enter author name"
+				 aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i> Search
 				</button>
@@ -18,26 +21,29 @@
 				</a>
 			</form>
 		</div>
-		<hr/>
+		<hr />
 
 	</div>
 
 	<div layout:fragment="cardHeader">
 		<i class="fas fa-chalkboard-teacher"></i> Authors
 	</div>
-		
+
 	<div layout:fragment="pageContent">
-		
-		<div class="row">
-			<div class="col-sm-4" th:each="author : ${authors}">
-			  <div class="card border-success">
+
+		<div class="card-deck">
+
+			<div class="card border-success" th:each="author : ${authors}">
 				<div class="card-body row">
 					<div class="col-sm-4">
-						<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%"/>
+						<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%" />
 					</div>
 					<div class="col-sm-8">
-					  	<h5 class="card-title" th:text="${author.name}">Author Name</h5>
-					  	<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of birth</h6>
+						<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+						<hr />
+						<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of
+							birth</h6>
+						<hr />
 						<!-- Show only the first 100 characters of the author's biography -->
 						<p class="card-text" th:text="${#strings.substring(author.bio, 0, 99)}">Short book description. </p>
 						...
@@ -48,11 +54,12 @@
 						<i class="fas fa-chevron-circle-right"></i> View details
 					</a>
 				</div>
-			  </div>
 			</div>
-		  </div>
-		
+
+		</div>
+
 	</div>
 
 </body>
+
 </html>
