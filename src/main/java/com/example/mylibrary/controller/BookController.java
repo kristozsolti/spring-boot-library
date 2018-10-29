@@ -33,7 +33,7 @@ public class BookController {
 
 	@GetMapping("/books/search")
 	public String getMethodName(@RequestParam String bookTitle, Model model) {
-		model.addAttribute("books", bookService.getBooksByTitle(bookTitle));
+		model.addAttribute("books", bookService.searchBooksByTitle(bookTitle));
 		return "book/books";
 	}
 

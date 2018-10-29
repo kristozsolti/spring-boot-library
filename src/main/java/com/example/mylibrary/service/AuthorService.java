@@ -21,8 +21,9 @@ public class AuthorService implements IAuthorService {
 	
 	@Override
 	public List<Author> getAllAuthors() {
-		log.info("GET ALL AUTHORS.");
-		return authorRepo.findAll();
+		List<Author> authors = authorRepo.findAll();
+		log.info("GET ALL AUTHORS. FOUND -> " + authors.size());
+		return authors;
 	}
 
 	@Override
@@ -31,6 +32,13 @@ public class AuthorService implements IAuthorService {
 		Author author = authorRepo.findById(id).get();
 		log.info("GET AUTHOR -> " + author.toString());
 		return author;
+	}
+
+	@Override
+	public List<Author> searchAuthorsByName(String authorName) {
+		List<Author> authorsFound = authorRepo.findAllByNameContainingIgnoreCase(authorName);
+		log.info("SEARCH AUTHORS WITH NAME -> " + authorName + " FOUND " + authorsFound.size());
+		return authorsFound;
 	}
 
 }

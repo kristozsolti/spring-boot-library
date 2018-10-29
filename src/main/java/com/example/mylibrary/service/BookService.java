@@ -35,7 +35,7 @@ public class BookService implements IBookService {
 	}
 
 	@Override
-	public List<Book> getBooksByTitle(String bookTitle) {
+	public List<Book> searchBooksByTitle(String bookTitle) {
 		List<Book> booksFound = bookRepo.findAllByTitleContainingIgnoreCase(bookTitle);
 		log.info("SEARCH BOOKS WITH TITLE -> " + bookTitle + " FOUND " + booksFound.size());
 		return booksFound;

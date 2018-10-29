@@ -10,6 +10,6 @@ public interface IBookService {
 
 	public Book getBookById(String bookId);
 
-	public List<Book> getBooksByTitle(String bookTitle);
+	public List<Book> searchBooksByTitle(String bookTitle);
 	
 }

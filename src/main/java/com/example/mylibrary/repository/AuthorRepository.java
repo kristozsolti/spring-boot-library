@@ -12,4 +12,6 @@ public interface AuthorRepository extends CrudRepository<Author, Long>{
 
 	public List<Author> findAll();
 	
+	public List<Author> findAllByNameContainingIgnoreCase(String authorName);
+	
 }

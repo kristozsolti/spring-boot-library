@@ -10,4 +10,6 @@ public interface IAuthorService {
 
 	public Author getAuthorById(String authorId);
 
+	public List<Author> searchAuthorsByName(String authorName);
+
 }
