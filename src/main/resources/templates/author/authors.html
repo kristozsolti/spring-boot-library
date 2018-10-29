@@ -9,10 +9,13 @@
 
 		<div>
 			<form class="form-inline my-2 my-lg-0" th:action="@{/authors/search}" th:method="get">
-				<input class="form-control mr-sm-2" name="authorName" type="search" placeholder="Enter author name" aria-label="Search">
+				<input class="form-control mr-sm-2" name="authorName" th:value="${searchValue}" type="search" placeholder="Enter author name" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i> Search
 				</button>
+				<a th:href="@{/authors}" class="btn btn-outline-danger">
+					<i class="fas fa-times-circle "></i>
+				</a>
 			</form>
 		</div>
 		<hr/>

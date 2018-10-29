@@ -32,9 +32,11 @@ public class AuthorController {
 		return "author/author";
 	}
 	
+	// Search for authors by name
 	@GetMapping("/authors/search")
-	public String getMethodName(@RequestParam String authorName, Model model) {
+	public String searchAuthors(@RequestParam String authorName, Model model) {
 		model.addAttribute("authors", authorService.searchAuthorsByName(authorName));
+		model.addAttribute("searchValue", authorName);
 		return "author/authors";
 	}
 	

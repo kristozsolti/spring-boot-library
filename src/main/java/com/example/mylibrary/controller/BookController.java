@@ -19,21 +19,25 @@ public class BookController {
 
 	private IBookService bookService;
 
+	// All books page
 	@RequestMapping("/books")
 	public String books(Model model) {
 		model.addAttribute("books", bookService.getAllBooks());
 		return "book/books";
 	}
 
+	// Specific book page
 	@RequestMapping("/books/{bookId}")
 	public String book(@PathVariable String bookId, Model model) {
 		model.addAttribute("book", bookService.getBookById(bookId));
 		return "book/book";
 	}
 
+	// Search for books by title
 	@GetMapping("/books/search")
-	public String getMethodName(@RequestParam String bookTitle, Model model) {
+	public String searchBooks(@RequestParam String bookTitle, Model model) {
 		model.addAttribute("books", bookService.searchBooksByTitle(bookTitle));
+		model.addAttribute("searchValue", bookTitle);
 		return "book/books";
 	}
 
