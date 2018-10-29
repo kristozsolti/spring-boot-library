@@ -75,5 +75,10 @@ public class Author {
 	public void setWrittenBooks(List<Book> writtenBooks) {
 		this.writtenBooks = writtenBooks;
 	}
+
+	@Override
+	public String toString() {
+		return "Author [id=" + id + ", name=" + name + ", NumberOfWrittenBooks=" + writtenBooks.size() + "]";
+	}
 	
 }

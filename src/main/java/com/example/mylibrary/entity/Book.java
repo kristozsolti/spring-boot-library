@@ -108,6 +108,10 @@ public class Book {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", authorID=" + author.getId() + "]";
+	}
 	
 }

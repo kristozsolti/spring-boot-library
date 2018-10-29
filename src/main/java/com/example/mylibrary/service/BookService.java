@@ -2,6 +2,8 @@ package com.example.mylibrary.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +17,20 @@ public class BookService implements IBookService {
 		this.bookRepo = bookRepo;
 	}
 	private BookRepository bookRepo;
+	private static final Logger log = LoggerFactory.getLogger(BookService.class);
 
 	@Override
 	public List<Book> getAllBooks() {
+		log.info("GET ALL BOOKS.");
 		return bookRepo.findAll();
 	}
 
 	@Override
 	public Book getBookById(String bookId) {
 		Long id = Long.parseLong(bookId);
-		return bookRepo.findById(id).get();
+		Book book = bookRepo.findById(id).get();
+		log.info("GET BOOK -> " + book.toString());
+		return book;
 	}
 
 }
