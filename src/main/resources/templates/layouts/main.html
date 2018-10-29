@@ -60,6 +60,10 @@
 	<!-- A container for main card element -->
 	<div class="container">
 	
+		<!-- A container for additional element -->
+		<div layout:fragment="aboveContent"></div>
+	
+		<!-- Main card element -->
 		<div class="card bg-light">
 		  <div class="card-header">
 		  	<div layout:fragment="cardHeader"></div>
@@ -72,6 +76,9 @@
 		  	<div layout:fragment="cardFooter"></div>
 		  </div>
 		</div>
+		
+		<!-- A container for additional element -->
+		<div layout:fragment="belowContent"></div>
 		
 	</div>
 	<hr/>
