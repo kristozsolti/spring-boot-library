@@ -13,9 +13,16 @@
 
 	<div layout:fragment="pageContent">
 
+		<div th:if="${param.success}" class="alert alert-success">
+			<h4 class="alert-heading">
+			 	<i class="fas fa-check-circle"></i> Message sent
+			</h4>
+			<p>We will process your request as fast as possible.</p>
+		</div>
+
 		<div class="card border-info">
 			<div class="card-body">
-				<form th:action="@{/contact}" method="post">
+				<form th:action="@{/contact}" th:method="post">
 
 					<div class="form-group">
 						<div class="input-group mb-2">
