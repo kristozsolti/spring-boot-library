@@ -47,7 +47,7 @@
 						<div class="col-sm-4">Pages: <span th:text="${book.numberOfPages}">Number of pages</span></div>
 					</div>
 					<hr />
-					<p class="card-text" th:text="${book.description}">Short book description. </p>
+					<p class="card-text" th:utext="${book.description}">Short book description. </p>
 				</div>
 			</div>
 		</div>
