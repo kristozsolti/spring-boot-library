@@ -15,6 +15,8 @@ public class GeneralExceptionHandler {
 	public String exception(Exception ex, Model model) {
 		model.addAttribute("exception", ex);
 		log.error("EXCEPTION CAUGHT -> " + ex);
+		log.error(ex.getMessage());
+		log.error(ex.getStackTrace().toString());
 		return "exception/generalException";
 	}
 

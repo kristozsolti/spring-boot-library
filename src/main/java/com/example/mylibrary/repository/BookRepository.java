@@ -13,5 +13,7 @@ public interface BookRepository extends CrudRepository<Book, Long>{
 	public List<Book> findAll();
 
 	public List<Book> findAllByTitleContainingIgnoreCase(String bookTitle);
+
+	public List<Book> findTop3ByOrderByRatingDesc();
 	
 }

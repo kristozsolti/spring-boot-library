@@ -12,4 +12,6 @@ public interface IAuthorService {
 
 	public List<Author> searchAuthorsByName(String authorName);
 
+	public List<Author> getTopAuthors();
+
 }

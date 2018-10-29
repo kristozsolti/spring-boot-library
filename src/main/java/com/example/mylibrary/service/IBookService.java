@@ -11,5 +11,7 @@ public interface IBookService {
 	public Book getBookById(String bookId);
 
 	public List<Book> searchBooksByTitle(String bookTitle);
+
+	public List<Book> getTopRatedBooks();
 	
 }

@@ -41,4 +41,11 @@ public class AuthorService implements IAuthorService {
 		return authorsFound;
 	}
 
+	@Override
+	public List<Author> getTopAuthors() {
+		List<Author> authors = authorRepo.findTop3ByOrderByRatingDesc();
+		log.info("GET TOP AUTHORS. FOUND -> " + authors.size());
+		return authors;
+	}
+
 }

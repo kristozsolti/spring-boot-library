@@ -41,4 +41,11 @@ public class BookService implements IBookService {
 		return booksFound;
 	}
 
+	@Override
+	public List<Book> getTopRatedBooks() {
+		List<Book> books = bookRepo.findTop3ByOrderByRatingDesc();
+		log.info("GET TOP RATED BOOKS. FOUND -> " + books.size());
+		return books;
+	}
+
 }

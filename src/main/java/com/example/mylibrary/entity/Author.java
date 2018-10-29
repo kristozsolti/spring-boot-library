@@ -25,6 +25,7 @@ public class Author {
 	private String bio;
 	@OneToMany(mappedBy = "author")
 	private List<Book> writtenBooks;
+	private Double rating;
 	
 	public Author() {}
 
@@ -74,6 +75,14 @@ public class Author {
 
 	public void setWrittenBooks(List<Book> writtenBooks) {
 		this.writtenBooks = writtenBooks;
+	}
+
+	public Double getRating() {
+		return rating;
+	}
+
+	public void setRating(Double rating) {
+		this.rating = rating;
 	}
 
 	@Override

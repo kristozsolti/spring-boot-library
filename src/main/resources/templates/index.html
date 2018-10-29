@@ -1,17 +1,85 @@
 <!DOCTYPE html>
-<html lang="hu"	layout:decorate="~{layouts/main}">
+<html lang="hu" layout:decorate="~{layouts/main}">
+
 <head>
 
 </head>
+
 <body>
 
 	<div layout:fragment="cardHeader">
 		<i class="fas fa-home"></i> Home
 	</div>
-	
+
 	<div layout:fragment="pageContent">
-		
+
+		<!-- TOP RATED BOOKS -->
+		<div class="card border-primary">
+			<div class="card-header">
+				<i class="fas fa-book"></i>
+				<i class="fas fa-sort-amount-up"></i> Top rated books
+			</div>
+			<div class="card-body">
+				<div class="card-deck">
+					<div class="card border-primary" th:each="book : ${topBooks}">
+
+						<div class="card-body row">
+							<div class="col-sm-4">
+								<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-title">
+									<span th:text="${book.author.name}"></span> : <span th:text="${book.title}"></span>
+								</h5>
+								<p class="card-text" th:text="${#strings.substring(book.description, 0, 99)}"></p>...
+							</div>
+						</div>
+						<div class="card-footer">
+							<a th:href="@{/books/{bookId}(bookId=${book.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
+								View details
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+
+		<!-- TOP AUTHORS -->
+		<div class="card border-success">
+			<div class="card-header">
+				<i class="fas fa-chalkboard-teacher"></i>
+				<i class="fas fa-sort-amount-up"></i> Top rated authors
+			</div>
+			<div class="card-body">
+				<div class="card-deck">
+					<div class="card border-success" th:each="author : ${topAuthors}">
+
+						<div class="card-body row">
+							<div class="col-sm-4">
+								<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%" />
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+								<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of
+									birth</h6>
+								<p class="card-text" th:text="${#strings.substring(author.bio, 0, 99)}">Short bio. </p>...
+							</div>
+						</div>
+						<div class="card-footer">
+							<a th:href="@{/books/{authorId}(authorId=${author.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
+								View details
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 </body>
+
 </html>
