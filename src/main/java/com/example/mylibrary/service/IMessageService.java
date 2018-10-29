@@ -1,7 +1,9 @@
 package com.example.mylibrary.service;
 
+import com.example.mylibrary.shared.ResponseMessage;
+
 public interface IMessageService {
 
-	public String saveMessage(String fromName, String fromEmail, String message);
+	public ResponseMessage saveMessage(String fromName, String fromEmail, String message);
 	
 }

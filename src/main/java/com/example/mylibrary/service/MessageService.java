@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.mylibrary.entity.Message;
 import com.example.mylibrary.repository.MessageRepository;
+import com.example.mylibrary.shared.ResponseMessage;
 
 @Service
 public class MessageService implements IMessageService {
@@ -18,17 +19,18 @@ public class MessageService implements IMessageService {
 	private static final Logger log = LoggerFactory.getLogger(MessageService.class);
 
 	@Override
-	public String saveMessage(String fromName, String fromEmail, String message) {
-		log.info("SAVING NEW MESSAGE FROM -> " + fromName + "\n EMAIL ADDRESS -> " + fromEmail + "\n MESSAGE -> " + message);
+	public ResponseMessage saveMessage(String fromName, String fromEmail, String message) {
+		
 		
 		Message newMessage = new Message();
 		newMessage.setFromName(fromName);
 		newMessage.setFromEmail(fromEmail);
 		newMessage.setMessage(message);
 		
+		log.info("SAVING NEW MESSAGE -> " + newMessage.toString());
 		messageRepo.save(newMessage);
 		
-		return "success";
+		return ResponseMessage.SUCCESS;
 		
 	}
 

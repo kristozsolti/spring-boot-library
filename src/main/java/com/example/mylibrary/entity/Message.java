@@ -52,5 +52,11 @@ public class Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	@Override
+	public String toString() {
+		return "Message [fromName=" + fromName + ", fromEmail=" + fromEmail + ", message=" + message
+				+ "]";
+	}
 	
 }

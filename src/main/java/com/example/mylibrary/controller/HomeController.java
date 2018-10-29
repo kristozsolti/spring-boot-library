@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.mylibrary.service.IAuthorService;
 import com.example.mylibrary.service.IBookService;
 import com.example.mylibrary.service.IMessageService;
+import com.example.mylibrary.shared.ResponseMessage;
 
 @Controller
 public class HomeController {
@@ -42,7 +43,7 @@ public class HomeController {
 	
 	@PostMapping("/contact")
 	public String contactus(@RequestParam String name, @RequestParam String email, @RequestParam String message, HttpServletResponse response) throws IOException {
-		String saveMsg = messageService.saveMessage(name, email, message);
+		ResponseMessage saveMsg = messageService.saveMessage(name, email, message);
 		response.sendRedirect("/contact?" + saveMsg);
 		return "contact";
 	}
