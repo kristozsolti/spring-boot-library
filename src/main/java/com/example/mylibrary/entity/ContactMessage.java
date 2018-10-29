@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "messages")
-public class Message {
+@Table(name = "contact_messages")
+public class ContactMessage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Message {
 	@Column(columnDefinition = "TEXT")
 	private String message;
 	
-	public Message() {}
+	public ContactMessage() {}
 
 	public Long getId() {
 		return id;

@@ -8,7 +8,7 @@
 <body>
 
 	<div layout:fragment="cardHeader">
-		<i class="fas fa-envelope"></i> Contact us
+		<i class="fas fa-sign-in-alt"></i> Sign in
 	</div>
 
 	<div layout:fragment="pageContent">
@@ -19,41 +19,38 @@
 			</h4>
 			<p>We will process your request as fast as possible.</p>
 		</div>
+		<div th:if="${param.error}" class="alert alert-danger">
+			<h4 class="alert-heading">
+			 	<i class="fas fa-check-exclamation-circle"></i> Something went wrong
+			</h4>
+			<p>Check your username and password and try again.</p>
+		</div>
 
 		<div class="card border-info">
 			<div class="card-body">
-				<form th:action="@{/contact}" th:method="post">
-
-					<div class="form-group">
-						<div class="input-group mb-2">
-							<div class="input-group-prepend">
-								<div class="input-group-text"><i class="fas fa-user text-info"></i></div>
-							</div>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-						</div>
-					</div>
+				<form th:action="@{/login}" th:method="post">
 
 					<div class="form-group">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
 								<div class="input-group-text"><i class="fas fa-envelope text-info"></i></div>
 							</div>
-							<input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
+							<input type="email" class="form-control" id="username" name="username" placeholder="example@gmail.com" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
-								<div class="input-group-text"><i class="fas fa-comment text-info"></i></div>
+								<div class="input-group-text"><i class="fas fa-key text-info"></i></div>
 							</div>
-							<textarea class="form-control" id="meassage" name="message" placeholder="Drop us some lines." required></textarea>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
 						</div>
 					</div>
 
 					<div class="text-center">
 						<button type="submit" class="btn btn-info py-2">
-							<i class="fas fa-paper-plane"></i> Send message
+							<i class="fas fa-sign-in-alt"></i> Sign in
 						</button>
 					</div>
 				</div>

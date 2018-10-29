@@ -5,24 +5,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mylibrary.entity.Message;
+import com.example.mylibrary.entity.ContactMessage;
 import com.example.mylibrary.repository.MessageRepository;
 import com.example.mylibrary.shared.ResponseMessage;
 
 @Service
-public class MessageService implements IMessageService {
+public class ContactMessageService implements IContactMessageService {
 	@Autowired
-	public MessageService(MessageRepository messageRepo) {
+	public ContactMessageService(MessageRepository messageRepo) {
 		this.messageRepo = messageRepo;
 	}
 	private MessageRepository messageRepo;
-	private static final Logger log = LoggerFactory.getLogger(MessageService.class);
+	private static final Logger log = LoggerFactory.getLogger(ContactMessageService.class);
 
 	@Override
 	public ResponseMessage saveMessage(String fromName, String fromEmail, String message) {
 		
 		
-		Message newMessage = new Message();
+		ContactMessage newMessage = new ContactMessage();
 		newMessage.setFromName(fromName);
 		newMessage.setFromEmail(fromEmail);
 		newMessage.setMessage(message);
@@ -30,7 +30,7 @@ public class MessageService implements IMessageService {
 		log.info("SAVING NEW MESSAGE -> " + newMessage.toString());
 		messageRepo.save(newMessage);
 		
-		return ResponseMessage.SUCCESS;
+		return ResponseMessage.success;
 		
 	}
 

@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mylibrary.service.IAuthorService;
 import com.example.mylibrary.service.IBookService;
-import com.example.mylibrary.service.IMessageService;
+import com.example.mylibrary.service.IContactMessageService;
 import com.example.mylibrary.shared.ResponseMessage;
 
 @Controller
 public class HomeController {
 	@Autowired
-	public HomeController(IBookService bookService, IAuthorService authorService, IMessageService messageService) {
+	public HomeController(IBookService bookService, IAuthorService authorService, IContactMessageService messageService) {
 		this.bookService = bookService;
 		this.authorService = authorService;
 		this.messageService = messageService;
@@ -27,7 +27,7 @@ public class HomeController {
 	}
 	private IBookService bookService;
 	private IAuthorService authorService;
-	private IMessageService messageService;
+	private IContactMessageService messageService;
 
 	@RequestMapping("/")
 	public String index(Model model) {
