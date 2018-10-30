@@ -27,11 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.inMemoryAuthentication()
-				.withUser("user@u.com")
+				.withUser("user@test.com")
 				.password("pwd")
 				.roles("USER")
 			.and()
-				.withUser("admin@a.com")
+				.withUser("admin@test.com")
 				.password("pwd")
 				.roles("ADMIN")
 		;
@@ -48,8 +48,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// ACCESS CONFIGURATION
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// FOR TESTING ONLY -- ACCESS H2 DB
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
+		
 		http
 			.authorizeRequests()
+			
 				// PUBLIC ZONE
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET ,"/registration").permitAll()
