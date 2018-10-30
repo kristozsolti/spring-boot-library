@@ -9,6 +9,13 @@ $( document ).ready( function() {
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
+	
+	// Logout button handler
+	$('#btnLogout').click( function(e) {
+		e.preventDefault();
+		$('#frmlogout').submit(); 
+		return false;
+	});
 			
 });
 

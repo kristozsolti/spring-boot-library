@@ -19,6 +19,12 @@
 			</h4>
 			<p>We will process your request as fast as possible.</p>
 		</div>
+		<div th:if="${param.logout}" class="alert alert-success">
+			<h4 class="alert-heading">
+			 	<i class="fas fa-check-circle"></i> Logout successfull
+			</h4>
+			<p>You signed out successfully</p>
+		</div>
 		<div th:if="${param.error}" class="alert alert-danger">
 			<h4 class="alert-heading">
 			 	<i class="fas fa-check-exclamation-circle"></i> Something went wrong
@@ -53,9 +59,9 @@
 							<i class="fas fa-sign-in-alt"></i> Sign in
 						</button>
 					</div>
-				</div>
 
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
 
