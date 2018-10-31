@@ -26,6 +26,10 @@ INSERT INTO USERS (email, password, full_name) VALUES ('gyula@test.com', 'pwd', 
 INSERT INTO USERS (email, password, full_name) VALUES ('jakab@test.com', 'pwd', 'Gipsz Jakab');
 INSERT INTO USERS (email, password, full_name) VALUES ('manyi@test.com', 'pwd', 'Harap Magdolna');
 INSERT INTO USERS (email, password, full_name) VALUES ('sonka@test.com', 'pwd', 'Sonka Szelet');
+INSERT INTO USERS (email, password, full_name) VALUES ('sonkasz@test.com', 'pwd', 'Sonka Szabolcs');
+INSERT INTO USERS (email, password, full_name) VALUES ('samu@test.com', 'pwd', 'Salamon Katalin');
+INSERT INTO USERS (email, password, full_name) VALUES ('jancsi@test.com', 'pwd', 'Gipsz Jancsi');
+INSERT INTO USERS (email, password, full_name) VALUES ('pacal@test.com', 'pwd', 'Rágós Pacal');
 
 -- ROLES
 INSERT INTO ROLES (role) VALUES ('USER');
@@ -37,4 +41,8 @@ INSERT INTO USERS_ROLES (user_id, role_id) VALUES (3, 1);
 INSERT INTO USERS_ROLES (user_id, role_id) VALUES (4, 1);
 INSERT INTO USERS_ROLES (user_id, role_id) VALUES (5, 1);
 INSERT INTO USERS_ROLES (user_id, role_id) VALUES (6, 1);
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (7, 1);
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (8, 1);
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (9, 1);
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (10, 1);
 
