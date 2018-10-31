@@ -56,4 +56,9 @@ public class UserController {
 		model.addAttribute("searchValue", userName);
 		return "user/users";
 	}
+	
+	@RequestMapping("/user-settings") 
+	public String userSettings() {
+		return "user/settings";
+	}
 }
