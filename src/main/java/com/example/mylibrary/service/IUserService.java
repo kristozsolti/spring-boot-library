@@ -14,4 +14,8 @@ public interface IUserService {
 
 	public List<User> getAllSimpleUsers();
 
+	public User findById(String userId);
+
+	public List<User> searchUsersByName(String userName);
+
 }

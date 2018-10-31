@@ -3,9 +3,12 @@ package com.example.mylibrary.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mylibrary.entity.User;
 import com.example.mylibrary.service.IUserService;
@@ -41,9 +44,16 @@ public class UserController {
 		return "user/users";
 	}
 	
-	@RequestMapping("/user")
-	public String user() {
-		
+	@RequestMapping("/users/{userId}")
+	public String user(@PathVariable String userId, Model model) {
+		model.addAttribute("user", userService.findById(userId));
 		return "user/user";
+	}
+	
+	@GetMapping("/users/search")
+	public String searchUsers(@RequestParam String userName, Model model) {
+		model.addAttribute("users", userService.searchUsersByName(userName));
+		model.addAttribute("searchValue", userName);
+		return "user/users";
 	}
 }

@@ -82,4 +82,22 @@ public class UserService implements IUserService, UserDetailsService {
 		return simpleUsers;
 	}
 
+	@Override
+	public User findById(String userId) {
+		log.info("GET USER WITH ID -> " + userId);
+		Long id = Long.parseLong(userId);
+		User user = userRepo.findById(id).get();
+		log.info("USER FOUND-> " + user);
+		
+		return user;
+	}
+
+	@Override
+	public List<User> searchUsersByName(String userName) {
+		// Input username has to be lowercase in order to search could be case insensitive
+		List<User> usersFound = userRepo.findAllByFullNameContainingIgnoreCase(userName.toLowerCase());
+		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
+		return usersFound;
+	}
+
 }

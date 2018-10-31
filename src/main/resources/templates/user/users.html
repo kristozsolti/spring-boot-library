@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="hu"	layout:decorate="~{layouts/main}">
 <head>
-
+	<link rel="stylesheet" href="/css/users.css">
 </head>
 <body>
 
-	<!-- A container for main card element -->
-	<div class="container">
-	
-		<!-- Main card element -->
-		<div class="card bg-light">
-		
-		  <div class="card-header">
-		  	<div layout:fragment="cardHeader">
-		  		<i class="fas fa-users"></i> Users
-		  	</div>
-		  </div>
-		  
-		  <div class="card-body">
-		  	<!-- Page Content will wrap here -->
-		    <div layout:fragment="pageContent">
-		    
-		    	<div th:each="user : ${users}">
-		    		<p th:text="${user.fullName}"></p>
-		    	</div>
-		    
-		    </div>
-		  </div>
-		  
-		  <div class="card-footer text-muted">
-		  	<div layout:fragment="cardFooter"></div>
-		  </div>
-		  
+	<div layout:fragment="aboveContent">
+
+		<div class="d-flex justify-content-center">
+			<form class="form-inline my-2 my-lg-0" th:action="@{/users/search}" th:method="get">
+				<input class="form-control mr-sm-2" name="userName" th:value="${searchValue}" type="search" placeholder="Enter user's name"
+				 aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+					<i class="fas fa-search"></i> Search
+				</button>
+				<a th:href="@{/users}" class="btn btn-outline-danger m-2">
+					<i class="fas fa-times-circle "></i>
+				</a>
+			</form>
 		</div>
+		<hr />
+
+	</div>
+	
+	<div class="card-header">
+	  	<div layout:fragment="cardHeader">
+	  		<i class="fas fa-users"></i> Users
+	  	</div>
+	</div>
+
 		
+	<div layout:fragment="pageContent">
+
+		<div class="card-deck">
+
+			<div class="card border-secondary" th:each="user : ${users}">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${user.fullName}">User's full name</h5>
+					<hr/>
+					<h6 class="card-subtitle mb-2" th:text="${user.email}">email address</h6>
+				</div>
+				<div class="card-footer">
+					<a th:href="@{/users/{userId}(userId=${user.id})}" class="card-link">
+						<i class="fas fa-chevron-circle-right"></i> View details
+					</a>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 </body>
