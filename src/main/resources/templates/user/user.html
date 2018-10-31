@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu"	layout:decorate="~{layouts/main}">
+<head>
+
+</head>
+<body>
+
+	<!-- A container for main card element -->
+	<div class="container">
+	
+		<!-- Main card element -->
+		<div class="card bg-light">
+		
+		  <div class="card-header">
+		  	<div layout:fragment="cardHeader">
+		  		<i class="fas fa-user"></i> 
+		  		<span sec:authentication="name"> Username </span>
+		  	</div>
+		  </div>
+		  
+		  <div class="card-body">
+		  	<!-- Page Content will wrap here -->
+		    <div layout:fragment="pageContent"></div>
+		  </div>
+		  
+		  <div class="card-footer text-muted">
+		  	<div layout:fragment="cardFooter"></div>
+		  </div>
+		  
+		</div>
+		
+	</div>
+
+</body>
+</html>

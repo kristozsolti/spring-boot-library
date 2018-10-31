@@ -1,5 +1,7 @@
 package com.example.mylibrary.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,15 @@ import com.example.mylibrary.shared.ResponseMessage;
 @Service
 public class UserService implements IUserService, UserDetailsService {
 	@Autowired
-	public UserService(UserRepository userRepository, RoleRepository roleRepo){
-		this.userRepository = userRepository;
+	public UserService(UserRepository userRepo, RoleRepository roleRepo){
+		this.userRepo = userRepo;
 		this.roleRepo = roleRepo;
 	}
-	private UserRepository userRepository;
+	private UserRepository userRepo;
 	private RoleRepository roleRepo;
 	private static final Logger log = LoggerFactory.getLogger(UserService.class);
 	private final String USER_ROLE = "USER";
+//	private final String ADMIN_ROLE = "ADMIN";
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -40,7 +43,7 @@ public class UserService implements IUserService, UserDetailsService {
 
 	@Override
 	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
+		return userRepo.findByEmail(email);
 	}
 
 	@Override
@@ -53,7 +56,7 @@ public class UserService implements IUserService, UserDetailsService {
 		}
 		
 		// If the user is already exists, return error message
-		if(userRepository.findByEmail(user.getEmail()) != null) {
+		if(userRepo.findByEmail(user.getEmail()) != null) {
 			log.error("USER REGISTRATION FAILED -> USER ALREADY EXISTS!");
 			return ResponseMessage.error;
 		}
@@ -66,9 +69,17 @@ public class UserService implements IUserService, UserDetailsService {
 			user.addRoles(USER_ROLE);
 		}
 		
-		userRepository.save(user);
+		userRepo.save(user);
 		log.info("NEW USER IS REGISTERED -> " + user);
 		return ResponseMessage.success;
+	}
+
+	@Override
+	public List<User> getAllSimpleUsers() {
+		List<User> simpleUsers = userRepo.findAllSimpleUsers();
+		log.info("GET ALL USERS WITH 'USER' ROLE -> " + simpleUsers);
+		
+		return simpleUsers;
 	}
 
 }

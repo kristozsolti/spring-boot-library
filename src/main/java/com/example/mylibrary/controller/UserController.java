@@ -35,4 +35,15 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping("/users")
+	public String users(Model model) {
+		model.addAttribute("users", userService.getAllSimpleUsers());
+		return "user/users";
+	}
+	
+	@RequestMapping("/user")
+	public String user() {
+		
+		return "user/user";
+	}
 }

@@ -56,6 +56,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET ,"/registration").permitAll()
 				.antMatchers(HttpMethod.POST, "/register").permitAll()
 				
+				// USER ZONE
+					// USERS
+				.antMatchers(HttpMethod.GET ,"/user").authenticated()
+				.antMatchers(HttpMethod.GET ,"/users").authenticated()
+				.antMatchers(HttpMethod.GET ,"/users/search").authenticated()
+				
 				// ADMIN ZONE
 				.antMatchers("/admin/**").hasAuthority("ADMIN")
 				
