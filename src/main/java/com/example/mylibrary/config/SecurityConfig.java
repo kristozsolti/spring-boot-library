@@ -43,9 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 					// Browse and search BOOKS
 				.antMatchers(HttpMethod.GET, "/books").permitAll()
+				.antMatchers(HttpMethod.GET, "/books/{\\d+}").permitAll()
 				.antMatchers(HttpMethod.GET, "/books/search").permitAll()
 					// Browse and search AUTHORS
 				.antMatchers(HttpMethod.GET, "/authors").permitAll()
+				.antMatchers(HttpMethod.GET, "/authors/{\\d+}").permitAll()
 				.antMatchers(HttpMethod.GET, "/authors/search").permitAll()
 					// Contact page and contact message
 				.antMatchers(HttpMethod.GET, "/contact").permitAll()
