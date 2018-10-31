@@ -36,18 +36,13 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
 	@RequestMapping("/contact")
 	public String contact() {
 		return "contact";
 	}
 	
-	@PostMapping("/contact")
-	public String contactus(@RequestParam String name, @RequestParam String email, @RequestParam String message, HttpServletResponse response) throws IOException {
+	@PostMapping("/save-message")
+	public String saveMessage(@RequestParam String name, @RequestParam String email, @RequestParam String message, HttpServletResponse response) throws IOException {
 		ResponseMessage saveMsg = messageService.saveMessage(name, email, message);
 		response.sendRedirect("/contact?" + saveMsg);
 		return "contact";
