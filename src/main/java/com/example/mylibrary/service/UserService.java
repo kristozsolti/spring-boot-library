@@ -76,7 +76,7 @@ public class UserService implements IUserService, UserDetailsService {
 
 	@Override
 	public List<User> getAllSimpleUsers() {
-		List<User> simpleUsers = userRepo.findAllSimpleUsers();
+		List<User> simpleUsers = userRepo.findAllUsersByRole(USER_ROLE);
 		log.info("GET ALL USERS WITH 'USER' ROLE -> " + simpleUsers);
 		
 		return simpleUsers;

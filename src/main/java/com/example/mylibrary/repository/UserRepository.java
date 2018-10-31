@@ -15,7 +15,7 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	
 	public List<User> findAll();
 	
-	@Query(value = "SELECT u FROM User u JOIN u.roles r ON r.role = 'USER'")
-	public List<User> findAllSimpleUsers();
+	@Query(value = "SELECT u FROM User u JOIN u.roles r ON r.role = ?1")
+	public List<User> findAllUsersByRole(String role);
 
 }
