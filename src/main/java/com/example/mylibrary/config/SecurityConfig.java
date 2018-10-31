@@ -39,8 +39,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			
 				// PUBLIC ZONE
+					// Index
 				.antMatchers(HttpMethod.GET, "/").permitAll()
+					// Browse and search BOOKS
+				.antMatchers(HttpMethod.GET, "/books").permitAll()
+				.antMatchers(HttpMethod.GET, "/books/search").permitAll()
+					// Browse and search AUTHORS
+				.antMatchers(HttpMethod.GET, "/authors").permitAll()
+				.antMatchers(HttpMethod.GET, "/authors/search").permitAll()
+					// Contact page and contact message
+				.antMatchers(HttpMethod.GET, "/contact").permitAll()
+				.antMatchers(HttpMethod.POST, "/save-message").permitAll()
+					// Registration form
 				.antMatchers(HttpMethod.GET ,"/registration").permitAll()
+				.antMatchers(HttpMethod.POST, "/register").permitAll()
 				
 				// ADMIN ZONE
 				.antMatchers("/admin/**").hasAuthority("ADMIN")
