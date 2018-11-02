@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu"	layout:decorate="~{layouts/main}">
+<head>
+
+</head>
+<body>
+
+	<div layout:fragment="cardHeader">
+  		<i class="fas fa-envelope-open-text"></i> Message from:
+  		<span th:text="${message.fromName}"></span>
+  	</div>
+
+	<div layout:fragment="pageContent">
+
+		<div class="card border-success">
+			<div class="card-body">
+				<div>
+					<h5 class="card-title">
+						<i class="fas fa-user"></i>
+					    From: 
+					    <span  th:text="${message.fromName}"></span>
+					</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						<i class="fas fa-envelope"></i>
+						Email: 
+						<span th:text="${message.fromEmail}"></span>
+					</h6>
+					<hr/>
+					<h5 class="card-title">
+						<i class="fas fa-scroll"></i>
+						Content:
+					</h5>
+					<p class="card-text" th:text="${message.message}">Message body </p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<div layout:fragment="cardFooter">
+		<a th:href="@{/admin/contact-messages}" class="btn btn-outline-primary">
+			<i class="fas fa-chevron-circle-left"></i> Back to messages
+		</a>
+		<a class="btn btn-outline-success" th:href="@{/admin/contact-messages/{msgId}(msgId = ${message.id})}">
+			<i class="fas fa-reply"></i> Reply
+		</a>
+		<a class="btn btn-outline-danger float-right" th:href="@{/admin/contact-messages/{msgId}/delete (msgId = ${message.id})}">
+			<i class="fas fa-trash-alt"></i> Delete
+		</a>
+	</div>
+
+</body>
+</html>

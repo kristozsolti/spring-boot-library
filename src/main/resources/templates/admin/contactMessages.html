@@ -11,6 +11,40 @@
 
 	<div layout:fragment="pageContent">
 
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">From</th>
+					<th scope="col">Email</th>
+					<th scope="col">Message</th>
+					<th scope="col">Open</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="message, iter : ${messages}">
+					<th scope="row" th:text="${iter.count}">Number</th>
+					<td th:text="${message.fromName}">Name</td>
+					<td th:text="${message.fromEmail}">Email</td>
+<!-- 					<td th:text="${message.message}">Message</td> -->
+					<td>
+						<div th:if="${message.message!=null and #strings.length(message.message) <= 99}">
+							<span th:text="${message.message}"></span>
+						</div>
+						<div th:if="${message.message!=null and #strings.length(message.message) > 99}">
+							<span th:text="${#strings.substring(message.message, 0, 99)}"></span>
+							<span>...</span>
+						</div>
+					</td>
+					<td>
+						<a class="btn btn-outline-primary" th:href="@{/admin/contact-messages/{msgId}(msgId = ${message.id})}">
+							<i class="fas fa-external-link-alt"></i> Open Message
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
 	</div>
 	
 	<div layout:fragment="cardFooter">

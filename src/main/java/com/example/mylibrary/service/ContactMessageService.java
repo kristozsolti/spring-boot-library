@@ -1,5 +1,7 @@
 package com.example.mylibrary.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,6 @@ public class ContactMessageService implements IContactMessageService {
 	@Override
 	public ResponseMessage saveMessage(String fromName, String fromEmail, String message) {
 		
-		
 		ContactMessage newMessage = new ContactMessage();
 		newMessage.setFromName(fromName);
 		newMessage.setFromEmail(fromEmail);
@@ -32,6 +33,20 @@ public class ContactMessageService implements IContactMessageService {
 		
 		return ResponseMessage.success;
 		
+	}
+
+	@Override
+	public List<ContactMessage> getAllMessages() {
+		List<ContactMessage> messages = messageRepo.findAll();
+		log.info("GET ALL MESSAGES. FOUND -> " + messages.size());
+		return messages;
+	}
+
+	@Override
+	public ContactMessage getMessageById(Long id) {
+		ContactMessage msg = messageRepo.findById(id).get();
+		log.info("GET MESSAGE -> " + msg);
+		return msg;
 	}
 
 }
