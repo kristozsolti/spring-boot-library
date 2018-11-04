@@ -11,7 +11,7 @@
 
 	<div layout:fragment="pageContent">
 
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th scope="col">#</th>
@@ -22,8 +22,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="message, iter : ${messages}">
-					<th scope="row" th:text="${iter.count}">Number</th>
+				<tr th:each="message, iter : ${messages}" th:classappend="${message.isReaded} ? table-default : table-info">
+					<th scope="row">
+<!-- 						<span th:text="${iter.count}"></span> -->
+						<span th:if="${!message.isReaded}" class="badge badge-pill badge-danger">NEW*</span>
+					</th>
 					<td th:text="${message.fromName}">Name</td>
 					<td th:text="${message.fromEmail}">Email</td>
 <!-- 					<td th:text="${message.message}">Message</td> -->

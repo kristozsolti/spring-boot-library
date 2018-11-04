@@ -14,4 +14,6 @@ public interface IAuthorService {
 
 	public List<Author> getTopAuthors();
 
+	public void saveAuthor(Author newAuthor);
+
 }

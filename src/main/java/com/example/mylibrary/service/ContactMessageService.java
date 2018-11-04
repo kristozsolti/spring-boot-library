@@ -27,6 +27,7 @@ public class ContactMessageService implements IContactMessageService {
 		newMessage.setFromName(fromName);
 		newMessage.setFromEmail(fromEmail);
 		newMessage.setMessage(message);
+		newMessage.setIsReaded(false);
 		
 		log.info("SAVING NEW MESSAGE -> " + newMessage.toString());
 		messageRepo.save(newMessage);
@@ -46,6 +47,10 @@ public class ContactMessageService implements IContactMessageService {
 	public ContactMessage getMessageById(Long id) {
 		ContactMessage msg = messageRepo.findById(id).get();
 		log.info("GET MESSAGE -> " + msg);
+		
+		msg.setIsReaded(true);
+		messageRepo.save(msg);
+		
 		return msg;
 	}
 

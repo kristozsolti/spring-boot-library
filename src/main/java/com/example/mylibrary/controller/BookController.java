@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mylibrary.entity.Book;
 import com.example.mylibrary.service.IBookService;
 
 @Controller
@@ -40,5 +41,12 @@ public class BookController {
 		model.addAttribute("searchValue", bookTitle);
 		return "book/books";
 	}
+	
+	@RequestMapping("/books/add-new")
+	public String addNewBook(Model model) {
+		model.addAttribute("newBook", new Book());
+		return "book/newBook";
+	}
+	
 
 }

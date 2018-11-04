@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	private static final String ADMIN_ROLE = "ADMIN";
 
 	// ALLOWING NON-CRYPTED PASSWORDS FOR TESTING ONLY
 	@Bean
@@ -63,7 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET ,"/users/search").authenticated()
 				
 				// ADMIN ZONE
-				.antMatchers("/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/admin/**").hasAuthority(ADMIN_ROLE)
+				.antMatchers(HttpMethod.GET, "/books/add-new").hasAuthority(ADMIN_ROLE)
+				.antMatchers(HttpMethod.GET, "/authors/add-new").hasAuthority(ADMIN_ROLE)
+				.antMatchers(HttpMethod.POST, "/books/add-new").hasAuthority(ADMIN_ROLE)
+				.antMatchers(HttpMethod.POST, "/authors/add-new").hasAuthority(ADMIN_ROLE)
 				
 				.anyRequest().authenticated()
 			.and()

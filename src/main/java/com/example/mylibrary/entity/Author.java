@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -19,10 +21,14 @@ public class Author {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
 	private String photoUrl;
+	
 	@Column(columnDefinition = "TEXT")
 	private String bio;
+	
 	@OneToMany(mappedBy = "author")
 	private List<Book> writtenBooks;
 	private Double rating;

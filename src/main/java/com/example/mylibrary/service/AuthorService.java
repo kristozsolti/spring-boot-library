@@ -48,4 +48,13 @@ public class AuthorService implements IAuthorService {
 		return authors;
 	}
 
+	@Override
+	public void saveAuthor(Author newAuthor) {
+		log.info("SAVING NEW AUTHOR WITH NAME -> " + newAuthor.getName());
+		
+		authorRepo.save(newAuthor);
+		
+		log.info("AUTHOR SAVED");
+	}
+
 }

@@ -18,6 +18,7 @@ public class ContactMessage {
 	private String fromEmail;
 	@Column(columnDefinition = "TEXT")
 	private String message;
+	private Boolean isReaded;
 	
 	public ContactMessage() {}
 
@@ -51,6 +52,14 @@ public class ContactMessage {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Boolean getIsReaded() {
+		return isReaded;
+	}
+
+	public void setIsReaded(Boolean readed) {
+		this.isReaded = readed;
 	}
 
 	@Override

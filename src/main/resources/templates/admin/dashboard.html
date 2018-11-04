@@ -10,7 +10,34 @@
   	</div>
 
 	<div layout:fragment="pageContent">
-
+		<div class="card">
+			<div class="card-body">
+				<a th:href="@{/admin/contact-messages}">
+					<i class="fas fa-envelope"></i> Contact Messages
+				</a>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<a th:href="@{/users}">
+					<i class="fas fa-users"></i> Manage users - with roles
+				</a>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<a th:href="@{/books}">
+					<i class="fas fa-book"></i> Books - add - edit
+				</a>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<a th:href="@{/authors}">
+					<i class="fas fa-chalkboard-teacher"></i> Authors - add - edit
+				</a>
+			</div>
+		</div>
 	</div>
 	
 	<div layout:fragment="cardFooter">
