@@ -48,4 +48,14 @@ public class BookService implements IBookService {
 		return books;
 	}
 
+	@Override
+	public void saveBook(Book newBook) {
+		log.info("SAVING NEW BOOK WITH TITLE -> " + newBook.getTitle());
+		
+		bookRepo.save(newBook);
+		
+		log.info("BOOK SAVED");
+		
+	}
+
 }

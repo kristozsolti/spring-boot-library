@@ -11,6 +11,110 @@
 
 	<div layout:fragment="pageContent">
 
+		<div class="card border-primary">
+			<div class="card-body">
+				<form th:action="@{/books/add-new}" th:method="post" th:object="${newBook}">
+
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-heading text-info"></i></div>
+							</div>
+							<input type="text" class="form-control" id="title" name="title" th:field="*{title}" placeholder="Enter book's title" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-calendar-alt text-info"></i></div>
+							</div>
+							<input type="text" class="form-control" id="isbn" name="isbn" th:field="*{isbn}" placeholder="ISBN" required>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-link text-info"></i></div>
+							</div>
+							<input type="text" class="form-control" id="photoUrl" name="photoUrl" th:field="*{photoUrl}" placeholder="URL of book's cover photo" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-thumbs-up text-info"></i></div>
+							</div>
+							<input type="number" max="5" step="0.1" class="form-control" id="rating" name="rating" th:field="*{rating}" placeholder="Rating: 1.0 to 5.0" required>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-align-left text-info"></i></div>
+							</div>
+							<textarea class="form-control" id="description" name="description" th:field=*{description} placeholder="Write some lines about the book" required></textarea>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-file text-info"></i></div>
+							</div>
+							<input type="number" min="1" step="1" class="form-control" id="numberOfPages" name="numberOfPages" th:field="*{numberOfPages}" placeholder="Number of pages" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-calendar text-info"></i></div>
+							</div>
+							<input type="number" min="1" step="1" max="2019" class="form-control" id="publicationYear" name="publicationYear" th:field="*{publicationYear}" placeholder="Year of publication" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text"><i class="fas fa-newspaper text-info"></i></div>
+							</div>
+							<input type="text" class="form-control" id="publicatedBy" name="publicatedBy" th:field="*{publicatedBy}" placeholder="Publicted by" required>
+						</div>
+					</div>
+					
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+<!-- 							<div class="input-group-text"><i class="fas fa-chalkboard-teacher text-info"></i> Author</div> -->
+					    	<label class="input-group-text" for="author">
+					    		<i class="fas fa-chalkboard-teacher text-info mr-2"></i> Author:
+					    	</label>
+					  	</div>
+						<select class="custom-select" th:field="*{author}" id="author" name="author">
+						  <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">One</option>
+						</select>
+						<div class="input-group-append">
+					    	<a class="btn btn-outline-primary" href="/authors/add-new" data-toggle="tooltip" data-placement="top" title="Can't find the author on the list? Add a new author!">
+					    		<i class="fas fa-user-plus"></i>
+					    		Add new author
+					    	</a>
+					  	</div>
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-outline-success py-2">
+							<i class="fas fa-save"></i> Save book
+						</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+
 	</div>
 	
 	<div layout:fragment="cardFooter">

@@ -47,7 +47,7 @@
 							<div class="input-group-prepend">
 								<div class="input-group-text"><i class="fas fa-thumbs-up text-info"></i></div>
 							</div>
-							<input type="range" max="5" step="0.01" class="form-control-range" id="rating" name="rating" th:field="*{rating}" placeholder="URL of author's photo" required>
+							<input type="number" max="5" step="0.1" class="form-control" id="rating" name="rating" th:field="*{rating}" placeholder="Author rating: 1.0 to 5.0" required>
 						</div>
 					</div>
 
@@ -61,7 +61,7 @@
 					</div>
 
 					<div class="text-center">
-						<button type="submit" class="btn btn-info py-2">
+						<button type="submit" class="btn btn-outline-success py-2">
 							<i class="fas fa-save"></i> Save author
 						</button>
 					</div>

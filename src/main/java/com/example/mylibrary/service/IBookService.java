@@ -13,5 +13,7 @@ public interface IBookService {
 	public List<Book> searchBooksByTitle(String bookTitle);
 
 	public List<Book> getTopRatedBooks();
+
+	public void saveBook(Book newBook);
 	
 }
