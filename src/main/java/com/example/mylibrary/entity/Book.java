@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "books")
 public class Book {
@@ -18,9 +20,12 @@ public class Book {
 	private String title;
 	private String isbn;
 	private Double rating;
+	
 	@Column(columnDefinition = "TEXT")
 	private String description;
+	
 	@ManyToOne
+	@JsonManagedReference
 	private Author author;
 	private Integer numberOfPages;
 	private String publicatedBy;

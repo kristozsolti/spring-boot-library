@@ -1,26 +1,45 @@
 package com.example.mylibrary.config;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@SuppressWarnings("deprecation")
+
 @Configuration
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	private static final String ADMIN_ROLE = "ADMIN";
+	private static final String ANGULAR_URI = "http://localhost:4200";
 
 	// ALLOWING NON-CRYPTED PASSWORDS FOR TESTING ONLY
 	@Bean
 	 public static NoOpPasswordEncoder passwordEncoder() {
 	  return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
 	 }
+	
+	// ALLOWING CORS FOR ANGULAR
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList(ANGULAR_URI));
+		configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/api/**", configuration);
+		return source;
+	}
 	
 	// ALLOWING STATIC RESOURCES
 	@Override
@@ -38,8 +57,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().frameOptions().disable();
 		
 		http
+			.cors().and()
 			.authorizeRequests()
-			
+				// REST CONTROLLER
+				
+				.antMatchers("/api/**").permitAll()
 				// PUBLIC ZONE
 					// Index
 				.antMatchers(HttpMethod.GET, "/").permitAll()
@@ -84,9 +106,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logout()
 					.logoutSuccessUrl("/login?logout")
 					.permitAll()
-			;
-	} 
-	
+				;
+	} 	
 	
 //	@Bean
 //    public PasswordEncoder passwordEncoder() {

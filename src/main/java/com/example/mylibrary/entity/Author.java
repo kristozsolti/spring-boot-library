@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -30,6 +32,7 @@ public class Author {
 	private String bio;
 	
 	@OneToMany(mappedBy = "author")
+	@JsonBackReference
 	private List<Book> writtenBooks;
 	private Double rating;
 	
