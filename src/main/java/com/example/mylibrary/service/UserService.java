@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.mylibrary.entity.Role;
@@ -68,6 +69,11 @@ public class UserService implements IUserService, UserDetailsService {
 		} else {
 			user.addRoles(USER_ROLE);
 		}
+		// Hashing the password
+		String password = user.getPassword();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+		user.setPassword(hashedPassword);
 		
 		userRepo.save(user);
 		log.info("NEW USER IS REGISTERED -> " + user);

@@ -10,7 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -24,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String ADMIN_ROLE = "ADMIN";
 	private static final String ANGULAR_URI = "http://localhost:4200";
 
-	// ALLOWING NON-CRYPTED PASSWORDS FOR TESTING ONLY
+	// USING BCrypt FOR PASSWORD ENCODING
 	@Bean
-	 public static NoOpPasswordEncoder passwordEncoder() {
-	  return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-	 }
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 	
 	// ALLOWING CORS FOR ANGULAR
 	@Bean
@@ -60,7 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.cors().and()
 			.authorizeRequests()
 				// REST CONTROLLER
-				
 				.antMatchers("/api/**").permitAll()
 				// PUBLIC ZONE
 					// Index
@@ -108,10 +108,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.permitAll()
 				;
 	} 	
-	
-//	@Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 	
 }

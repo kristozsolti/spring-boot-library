@@ -20,16 +20,16 @@ INSERT INTO BOOKS (title, author_id, isbn, number_of_pages, publicated_by, publi
 INSERT INTO BOOKS (title, author_id, isbn, number_of_pages, publicated_by, publication_year, rating, photo_url, description) VALUES ('Jamie 30 percesek - Finom ételek villámgyorsan - Jamie vadonatúj módszere', 3, '9789633550199', 288, 'Park Kiadó', 2013, 2.2, 'https://marvin.bline.hu/product_images/152/B1081623.JPG', '"Megmutatom, hogyan készíthetsz el egy teljes menüt röpke 30 perc alatt! Nemcsak egy ételt, hanem egy komplett ebédet vagy vacsorát!" Ha te is annyira szeretsz főzni, mint én, és a fárasztó munkanap végén még éhes szájakról kell gondoskodnod, engedd, hogy megismertessem veled ezt a teljesen új módszert. Könyvemben megmutatom, hogyan lehetséges egy többfogásos étkezést megfőzni annyi idő alatt, amennyit eddig egyetlen ételre fordítottál. Ígérem, szemed-szád eláll, ha meglátod, mire vagy képes 30 perc alatt. Az enyém elállt, az biztos! Nem arról van szó, hogy engedj a minőségből. A lényeg, hogy szervezd meg a munkát, dolgozz gyorsan, és vess be ügyes mesterfogásokat – így szinte pillanatok alatt észbontóan finom ételeket tudsz az asztalra varázsolni. A 30 percesekben olvasható 50 ételsor mindegyikének leírása lényegre törő: semmi hókuszpókusz, csak lendületes, gyors főzés. A menüket úgy állítottam össze, hogy az egyes ételek jól passzoljanak egymáshoz; a receptek könnyen követhetők. A főzésnek ez a módszere arról szól, hogy célirányosan használjunk ki minden percet, érezzük jól magunkat, és a konyha nyerje vissza végre azt a funkcióját, amire kitalálták. Lehet, hogy most beléd villan: ilyen nincs, de én garantálom, hogy lehetséges. Lapozz bele, hogy lásd, milyen életsorokat fogsz megalkotni. Ha egyszer elkezdesz így főzni, nemcsak hogy imádni fogod: sose főzöl többé a régi módon!');
 
 --USERS
-INSERT INTO USERS (email, password, full_name) VALUES ('admin@test.com', 'pwd', 'Test Admin'); -- ADMIN
-INSERT INTO USERS (email, password, full_name) VALUES ('user@test.com', 'pwd', 'Test User');
-INSERT INTO USERS (email, password, full_name) VALUES ('gyula@test.com', 'pwd', 'Keresztes Gyula');
-INSERT INTO USERS (email, password, full_name) VALUES ('jakab@test.com', 'pwd', 'Gipsz Jakab');
-INSERT INTO USERS (email, password, full_name) VALUES ('manyi@test.com', 'pwd', 'Harap Magdolna');
-INSERT INTO USERS (email, password, full_name) VALUES ('sonka@test.com', 'pwd', 'Sonka Szelet');
-INSERT INTO USERS (email, password, full_name) VALUES ('sonkasz@test.com', 'pwd', 'Sonka Szabolcs');
-INSERT INTO USERS (email, password, full_name) VALUES ('samu@test.com', 'pwd', 'Salamon Katalin');
-INSERT INTO USERS (email, password, full_name) VALUES ('jancsi@test.com', 'pwd', 'Gipsz Jancsi');
-INSERT INTO USERS (email, password, full_name) VALUES ('pacal@test.com', 'pwd', 'Rágós Pacal');
+INSERT INTO USERS (email, password, full_name) VALUES ('admin@test.com', '$2a$10$aeYJ8JQl7xVHSpn24akN1eKqPcObuUl5WXoUtC81vnYMYOaGsNjY6', 'Test Admin'); -- ADMIN
+INSERT INTO USERS (email, password, full_name) VALUES ('user@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Test User');
+INSERT INTO USERS (email, password, full_name) VALUES ('gyula@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Keresztes Gyula');
+INSERT INTO USERS (email, password, full_name) VALUES ('jakab@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Gipsz Jakab');
+INSERT INTO USERS (email, password, full_name) VALUES ('manyi@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Harap Magdolna');
+INSERT INTO USERS (email, password, full_name) VALUES ('sonka@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Sonka Szelet');
+INSERT INTO USERS (email, password, full_name) VALUES ('sonkasz@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Sonka Szabolcs');
+INSERT INTO USERS (email, password, full_name) VALUES ('samu@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Salamon Katalin');
+INSERT INTO USERS (email, password, full_name) VALUES ('jancsi@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Gipsz Jancsi');
+INSERT INTO USERS (email, password, full_name) VALUES ('pacal@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.', 'Rágós Pacal');
 
 -- ROLES
 INSERT INTO ROLES (role) VALUES ('USER');
