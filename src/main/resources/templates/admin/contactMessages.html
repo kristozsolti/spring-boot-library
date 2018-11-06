@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu"	layout:decorate="~{layouts/main}">
 <head>
-
+	<link rel="stylesheet" href="/css/contactMessages.css"> 
 </head>
 <body>
 
@@ -22,9 +22,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="message, iter : ${messages}" th:classappend="${message.isReaded} ? table-default : table-info">
+				<tr th:each="message, iter : ${messages}" th:classappend="${message.isReaded} ? table-default : 'table-info unreaded'">
 					<th scope="row">
-<!-- 						<span th:text="${iter.count}"></span> -->
+						<span th:text="${iter.count}"></span>
 						<span th:if="${!message.isReaded}" class="badge badge-pill badge-danger">NEW*</span>
 					</th>
 					<td th:text="${message.fromName}">Name</td>
