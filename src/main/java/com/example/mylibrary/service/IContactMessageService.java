@@ -7,10 +7,12 @@ import com.example.mylibrary.shared.ResponseMessage;
 
 public interface IContactMessageService {
 
-	public ResponseMessage saveMessage(String fromName, String fromEmail, String message);
+	public ResponseMessage saveMessage(ContactMessage message);
 
 	public List<ContactMessage> getAllMessages();
 
 	public ContactMessage getMessageById(Long id);
+
+	public void deleteContactMessageById(Long msgId);
 	
 }

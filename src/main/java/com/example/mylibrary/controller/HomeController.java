@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mylibrary.entity.ContactMessage;
 import com.example.mylibrary.service.IAuthorService;
 import com.example.mylibrary.service.IBookService;
 import com.example.mylibrary.service.IContactMessageService;
@@ -37,14 +38,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/contact")
-	public String contact() {
+	public String contact(Model model) {
+		model.addAttribute("newMessage", new ContactMessage());
 		return "contact";
 	}
 	
 	@PostMapping("/save-message")
-	public String saveMessage(@RequestParam String name, @RequestParam String email, @RequestParam String message, HttpServletResponse response) throws IOException {
-		ResponseMessage saveMsg = messageService.saveMessage(name, email, message);
+	public void saveMessage(@ModelAttribute ContactMessage newMessage, HttpServletResponse response) throws IOException {
+		ResponseMessage saveMsg = messageService.saveMessage(newMessage);
 		response.sendRedirect("/contact?" + saveMsg);
-		return "contact";
 	}
 }

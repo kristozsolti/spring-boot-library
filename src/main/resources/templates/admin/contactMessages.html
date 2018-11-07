@@ -17,6 +17,7 @@
 					<th scope="col">#</th>
 					<th scope="col">From</th>
 					<th scope="col">Email</th>
+					<th scope="col">Received</th>
 					<th scope="col">Message</th>
 					<th scope="col">Open</th>
 				</tr>
@@ -29,7 +30,7 @@
 					</th>
 					<td th:text="${message.fromName}">Name</td>
 					<td th:text="${message.fromEmail}">Email</td>
-<!-- 					<td th:text="${message.message}">Message</td> -->
+					<td th:text="${#dates.format(message.arrivalDate, 'yyyy.MM.dd')}">Date</td> 
 					<td>
 						<div th:if="${message.message!=null and #strings.length(message.message) <= 99}">
 							<span th:text="${message.message}"></span>

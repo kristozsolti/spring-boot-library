@@ -1,5 +1,6 @@
 package com.example.mylibrary.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,29 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.mylibrary.entity.ContactMessage;
-import com.example.mylibrary.repository.MessageRepository;
+import com.example.mylibrary.repository.ContactMessageRepository;
 import com.example.mylibrary.shared.ResponseMessage;
 
 @Service
 public class ContactMessageService implements IContactMessageService {
 	@Autowired
-	public ContactMessageService(MessageRepository messageRepo) {
+	public ContactMessageService(ContactMessageRepository messageRepo) {
 		this.messageRepo = messageRepo;
 	}
-	private MessageRepository messageRepo;
+	private ContactMessageRepository messageRepo;
 	private static final Logger log = LoggerFactory.getLogger(ContactMessageService.class);
 
 	@Override
-	public ResponseMessage saveMessage(String fromName, String fromEmail, String message) {
+	public ResponseMessage saveMessage(ContactMessage message) {
 		
-		ContactMessage newMessage = new ContactMessage();
-		newMessage.setFromName(fromName);
-		newMessage.setFromEmail(fromEmail);
-		newMessage.setMessage(message);
-		newMessage.setIsReaded(false);
+		message.setArrivalDate(new Date());
 		
-		log.info("SAVING NEW MESSAGE -> " + newMessage.toString());
-		messageRepo.save(newMessage);
+		log.info("SAVING NEW MESSAGE -> " + message.toString());
+		messageRepo.save(message);
 		
 		return ResponseMessage.success;
 		
@@ -38,7 +35,7 @@ public class ContactMessageService implements IContactMessageService {
 
 	@Override
 	public List<ContactMessage> getAllMessages() {
-		List<ContactMessage> messages = messageRepo.findAll();
+		List<ContactMessage> messages = messageRepo.findAllByIsDeletedFalseOrderByArrivalDateDesc();
 		log.info("GET ALL MESSAGES. FOUND -> " + messages.size());
 		return messages;
 	}
@@ -52,6 +49,14 @@ public class ContactMessageService implements IContactMessageService {
 		messageRepo.save(msg);
 		
 		return msg;
+	}
+
+	@Override
+	public void deleteContactMessageById(Long msgId) {
+		ContactMessage message = getMessageById(msgId);
+		log.info("SET IS_DELETED TRUE ON MESSAGE -> " + message);
+		message.setIsDeleted(true);
+		messageRepo.save(message);
 	}
 
 }

@@ -1,11 +1,15 @@
 package com.example.mylibrary.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "contact_messages")
@@ -16,11 +20,19 @@ public class ContactMessage {
 	private Long id;
 	private String fromName;
 	private String fromEmail;
+	
 	@Column(columnDefinition = "TEXT")
 	private String message;
 	private Boolean isReaded;
 	
-	public ContactMessage() {}
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date arrivalDate;
+	private Boolean isDeleted;
+	
+	public ContactMessage() {
+		this.isReaded = false;
+		this.isDeleted = false;
+	}
 
 	public Long getId() {
 		return id;
@@ -60,6 +72,22 @@ public class ContactMessage {
 
 	public void setIsReaded(Boolean readed) {
 		this.isReaded = readed;
+	}
+
+	public Date getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(Date arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+	
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	@Override

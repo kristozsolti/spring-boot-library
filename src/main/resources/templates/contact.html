@@ -22,14 +22,14 @@
 
 		<div class="card border-info">
 			<div class="card-body">
-				<form th:action="@{/save-message}" th:method="post">
+				<form th:action="@{/save-message}" th:method="post" th:object="${newMessage}">
 
 					<div class="form-group">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
 								<div class="input-group-text"><i class="fas fa-user text-info"></i></div>
 							</div>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+							<input type="text" class="form-control" id="fromName" name="fromName" th:field="*{fromName}" placeholder="Enter your name" required>
 						</div>
 					</div>
 
@@ -38,7 +38,7 @@
 							<div class="input-group-prepend">
 								<div class="input-group-text"><i class="fas fa-envelope text-info"></i></div>
 							</div>
-							<input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
+							<input type="email" class="form-control" id="fromEmail" name="fromEmail" th:field="*{fromEmail}" placeholder="example@gmail.com" required>
 						</div>
 					</div>
 
@@ -47,7 +47,7 @@
 							<div class="input-group-prepend">
 								<div class="input-group-text"><i class="fas fa-comment text-info"></i></div>
 							</div>
-							<textarea class="form-control" id="meassage" name="message" placeholder="Drop us some lines." required></textarea>
+							<textarea class="form-control" id="meassage" name="message" th:field="*{message}" placeholder="Drop us some lines." required></textarea>
 						</div>
 					</div>
 

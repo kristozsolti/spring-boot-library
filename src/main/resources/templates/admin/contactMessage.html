@@ -37,16 +37,18 @@
 
 	</div>
 	
-	<div layout:fragment="cardFooter">
+	<div layout:fragment="cardFooter" class="d-flex justify-content-between">
 		<a th:href="@{/admin/contact-messages}" class="btn btn-outline-primary">
-			<i class="fas fa-chevron-circle-left"></i> Back to messages
+			<i class="fas fa-chevron-circle-left"></i> Back
 		</a>
 		<a class="btn btn-outline-success" th:href="@{/admin/contact-messages/{msgId}(msgId = ${message.id})}">
 			<i class="fas fa-reply"></i> Reply
 		</a>
-		<a class="btn btn-outline-danger float-right" th:href="@{/admin/contact-messages/{msgId}/delete (msgId = ${message.id})}">
-			<i class="fas fa-trash-alt"></i> Delete
-		</a>
+		<form class="form-inline" th:action="@{/admin/contact-messages/{msgId}/delete(msgId = ${message.id})}" th:method="delete">
+			<button class="btn btn-outline-danger float-right" type="submit">
+				<i class="fas fa-trash-alt"></i> Delete
+			</button>
+		</form>
 	</div>
 
 </body>

@@ -9,8 +9,10 @@ import com.example.mylibrary.entity.ContactMessage;
 
 
 @Repository
-public interface MessageRepository extends CrudRepository<ContactMessage, Long> {
+public interface ContactMessageRepository extends CrudRepository<ContactMessage, Long> {
 
-	public List<ContactMessage> findAll();
+	public List<ContactMessage> findAllByOrderByArrivalDateDesc();
+	
+	public List<ContactMessage> findAllByIsDeletedFalseOrderByArrivalDateDesc();
 	
 }
