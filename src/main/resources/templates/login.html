@@ -16,9 +16,15 @@
 		<!-- MESSAGES -->
 		<div th:if="${param.logout}" class="alert alert-success">
 			<h4 class="alert-heading">
-			 	<i class="fas fa-check-circle"></i> Logout successfull
+			 	<i class="fas fa-check-circle"></i> Logout successful
 			</h4>
 			<p>You signed out successfully</p>
+		</div>
+		<div th:if="${param.registerSuccess}" class="alert alert-success">
+			<h4 class="alert-heading">
+			 	<i class="fas fa-check-circle"></i> Registration successful
+			</h4>
+			<p>Go ahead and Log In!</p>
 		</div>
 		<div th:if="${param.error}" class="alert alert-danger">
 			<h4 class="alert-heading">

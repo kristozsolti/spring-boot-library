@@ -1,5 +1,9 @@
 package com.example.mylibrary.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +37,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@ModelAttribute User user) {
+	public void register(@ModelAttribute User user, HttpServletResponse response) throws IOException {
 		userService.registerUser(user);
-		return "login";
+		response.sendRedirect("/login?registerSuccess");
 	}
 	
 	@RequestMapping("/users")
@@ -58,7 +62,14 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user-settings") 
-	public String userSettings() {
+	public String userSettings(Model model) {
+		model.addAttribute("user", userService.getAuthenticatedUser());
 		return "user/settings";
+	}
+	
+	@PostMapping("/user-settings/save")
+	public void saveSettings(@ModelAttribute User user, HttpServletResponse response) throws IOException {
+		userService.saveUserSettings(user);
+		response.sendRedirect("/user-settings?success");
 	}
 }

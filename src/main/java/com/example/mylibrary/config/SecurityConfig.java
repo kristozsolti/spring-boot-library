@@ -2,6 +2,7 @@ package com.example.mylibrary.config;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,7 +24,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	private static final String ADMIN_ROLE = "ADMIN";
-	private static final String ANGULAR_URI = "http://localhost:4200";
+	
+	@Value("${angular.uri}")
+	private String ANGULAR_URI;
 
 	// USING BCrypt FOR PASSWORD ENCODING
 	@Bean
@@ -77,7 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/contact").permitAll()
 				.antMatchers(HttpMethod.POST, "/save-message").permitAll()
 					// Registration form
-				.antMatchers(HttpMethod.GET ,"/registration").permitAll()
+				.antMatchers(HttpMethod.GET , "/login").permitAll()
+				.antMatchers(HttpMethod.GET , "/registration").permitAll()
 				.antMatchers(HttpMethod.POST, "/register").permitAll()
 				
 				// USER ZONE

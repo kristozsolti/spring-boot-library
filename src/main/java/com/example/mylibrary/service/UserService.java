@@ -5,6 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,9 +29,12 @@ public class UserService implements IUserService, UserDetailsService {
 	}
 	private UserRepository userRepo;
 	private RoleRepository roleRepo;
+
 	private static final Logger log = LoggerFactory.getLogger(UserService.class);
 	private final String USER_ROLE = "USER";
-//	private final String ADMIN_ROLE = "ADMIN";
+	
+	@Value("${user.default.avatar}")
+	private String DEFAULT_USER_AVATAR;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -75,6 +81,9 @@ public class UserService implements IUserService, UserDetailsService {
 		String hashedPassword = passwordEncoder.encode(password);
 		user.setPassword(hashedPassword);
 		
+		//Set defailt avatar image
+		user.setAvatarImg(DEFAULT_USER_AVATAR);
+		
 		userRepo.save(user);
 		log.info("NEW USER IS REGISTERED -> " + user);
 		return ResponseMessage.success;
@@ -104,6 +113,25 @@ public class UserService implements IUserService, UserDetailsService {
 		List<User> usersFound = userRepo.findAllByFullNameContainingIgnoreCase(userName.toLowerCase());
 		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
 		return usersFound;
+	}
+
+	@Override
+	public User getAuthenticatedUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
+		Long id = userDetails.getUserId();
+		
+		User authenticatedUser = userRepo.findById(id).get();
+		
+		log.info("GET AUTHENTICATED USER -> " + authenticatedUser);
+		
+		return authenticatedUser;
+	}
+
+	@Override
+	public void saveUserSettings(User user) {
+		log.debug("!!! SAVING USER SETTINGS -> " + user);
+//		userRepo.saveUserSettings();
 	}
 
 }

@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.example.mylibrary.shared.UserGender;
 
 @Entity
 @Table(name = "users")
@@ -30,6 +34,13 @@ public class User {
 	private String password;
 	
 	private String fullName;
+	private String avatarImg;
+	
+	@Enumerated(EnumType.STRING)
+	private UserGender gender;
+	
+	@Column(columnDefinition = "TEXT")
+	private String bio;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
@@ -86,6 +97,30 @@ public class User {
 			this.roles = new HashSet<>();
 		}
 		this.roles.add(new Role(roleName));
+	}
+
+	public String getAvatarImg() {
+		return avatarImg;
+	}
+
+	public void setAvatarImg(String avatarImg) {
+		this.avatarImg = avatarImg;
+	}
+
+	public UserGender getGender() {
+		return gender;
+	}
+
+	public void setGender(UserGender gender) {
+		this.gender = gender;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
 	@Override

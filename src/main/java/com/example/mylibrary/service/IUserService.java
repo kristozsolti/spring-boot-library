@@ -18,4 +18,8 @@ public interface IUserService {
 
 	public List<User> searchUsersByName(String userName);
 
+	public User getAuthenticatedUser();
+
+	public void saveUserSettings(User user);
+
 }
