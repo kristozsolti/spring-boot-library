@@ -23,17 +23,40 @@
 				<div class="card-deck">
 					<div class="card border-primary" th:each="book : ${topBooks}">
 
-						<div class="card-body row">
-							<div class="col-sm-4">
-								<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-4">
+									<img th:src="${book.photoUrl}" alt="Book Cover Photo" width="100%" />
+								</div>
+								<div class="col-sm-8">
+									<h5 class="card-title" th:text="${book.title}">Book Title</h5>
+								</div>
 							</div>
-							<div class="col-sm-8">
-								<h5 class="card-title">
-									<span th:text="${book.author.name}"></span> : <span th:text="${book.title}"></span>
-								</h5>
-								<p class="card-text" th:text="${#strings.substring(book.description, 0, 99)}"></p>...
+							
+							<div class="row">
+								<div class="col-12">
+									<hr/>
+									<h6 class="card-subtitle mb-2" th:text="${book.author.name}">Book Author name</h6>
+									<h6 class="card-subtitle mb-2 text-muted">
+										<span th:text="${book.publicatedBy}">Publicated By</span> -
+										<span th:text="${book.publicationYear}">Publicated In</span>
+									</h6>
+									<hr/>
+									<!-- Show only the first 150 characters of the book's description -->
+									<div th:if="${#strings.length(book.description) <= 99}">
+										<p class="card-text" th:text="${book.description}">Short book description. </p>
+									</div>
+									<div th:if="${#strings.length(book.description) > 99}">
+										<p class="card-text">
+											<span th:text="${#strings.substring(book.description, 0, 99)}">Short book description.</span>
+											<span>...</span>
+										</p>
+									</div>
+								</div>
 							</div>
+							
 						</div>
+
 						<div class="card-footer">
 							<a th:href="@{/books/{bookId}(bookId=${book.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
 								View details
@@ -56,17 +79,38 @@
 				<div class="card-deck">
 					<div class="card border-success" th:each="author : ${topAuthors}">
 
-						<div class="card-body row">
-							<div class="col-sm-4">
-								<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%" />
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-4">
+									<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%" />
+								</div>
+								<div class="col-sm-8">
+									<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+									<hr />
+									<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">
+										Date of birth
+									</h6>
+								</div>
 							</div>
-							<div class="col-sm-8">
-								<h5 class="card-title" th:text="${author.name}">Author Name</h5>
-								<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">Date of
-									birth</h6>
-								<p class="card-text" th:text="${#strings.substring(author.bio, 0, 99)}">Short bio. </p>...
+						
+							<div class="row">
+								<div class="col-12">
+									<hr />
+									<!-- Show only the first 100 characters of the author's biography -->
+									<div th:if="${#strings.length(author.bio) <= 99}">
+										<p class="card-text" th:text="${author.bio}">Short author description. </p>
+									</div>
+									<div th:if="${#strings.length(author.bio) > 99}">
+										<p class="card-text">
+											<span th:text="${#strings.substring(author.bio, 0, 99)}">Short author description. </span>
+											<span>...</span>
+										</p>
+									</div>
+								</div>
 							</div>
+							
 						</div>
+
 						<div class="card-footer">
 							<a th:href="@{/books/{authorId}(authorId=${author.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
 								View details
