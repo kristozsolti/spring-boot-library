@@ -3,6 +3,7 @@ package com.example.mylibrary.service;
 import java.util.List;
 
 import com.example.mylibrary.entity.User;
+import com.example.mylibrary.entity.UserInfo;
 import com.example.mylibrary.shared.ResponseMessage;
 
 
@@ -19,7 +20,9 @@ public interface IUserService {
 	public List<User> searchUsersByName(String userName);
 
 	public User getAuthenticatedUser();
+	
+	public UserInfo getAuthenticatedUserInfo();
 
-	public void saveUserSettings(User user);
+	public void saveUserInfo(UserInfo userInfo);
 
 }

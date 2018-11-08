@@ -18,8 +18,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query(value = "SELECT u FROM User u JOIN u.roles r ON r.role = ?1")
 	public List<User> findAllUsersByRole(String role);
 
+	//TODO Have to move to UserInfo
 	// Have to ignore ADMIN from the result list
-	@Query(value = "SELECT u FROM User u JOIN u.roles r ON r.role = 'USER' AND lower(u.fullName) LIKE %?1%")
-	public List<User> findAllByFullNameContainingIgnoreCase(String userName);
+//	@Query(value = "SELECT u FROM User u JOIN u.roles r ON r.role = 'USER' AND lower(u.fullName) LIKE %?1%")
+//	public List<User> findAllByFullNameContainingIgnoreCase(String userName);
 
 }

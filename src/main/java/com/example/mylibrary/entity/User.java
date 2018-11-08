@@ -6,8 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.example.mylibrary.shared.UserGender;
 
 @Entity
 @Table(name = "users")
@@ -33,21 +30,14 @@ public class User {
 	@Column(length = 60, nullable = false)
 	private String password;
 	
-	private String fullName;
-	private String avatarImg;
-	
-	@Enumerated(EnumType.STRING)
-	private UserGender gender;
-	
-	@Column(columnDefinition = "TEXT")
-	private String bio;
+	@OneToOne(cascade = CascadeType.ALL , mappedBy = "user")
+	private UserInfo userInfo;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = { @JoinColumn(name = "user_id") },
-			inverseJoinColumns = { @JoinColumn(name = "role_id") }
-			)
+			inverseJoinColumns = { @JoinColumn(name = "role_id") })
 	private Set<Role> roles = new HashSet<>();
 	
 	public User() {}
@@ -76,14 +66,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -99,33 +81,17 @@ public class User {
 		this.roles.add(new Role(roleName));
 	}
 
-	public String getAvatarImg() {
-		return avatarImg;
+	public UserInfo getUserInfo() {
+		return userInfo;
 	}
 
-	public void setAvatarImg(String avatarImg) {
-		this.avatarImg = avatarImg;
-	}
-
-	public UserGender getGender() {
-		return gender;
-	}
-
-	public void setGender(UserGender gender) {
-		this.gender = gender;
-	}
-
-	public String getBio() {
-		return bio;
-	}
-
-	public void setBio(String bio) {
-		this.bio = bio;
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", fullName=" + fullName + "]";
+		return "User [id=" + id + ", email=" + email + "]";
 	}
 	
 }

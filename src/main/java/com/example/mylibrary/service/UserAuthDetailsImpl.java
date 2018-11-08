@@ -11,11 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.example.mylibrary.entity.Role;
 import com.example.mylibrary.entity.User;
 
-public class UserDetailsImpl implements UserDetails {
+public class UserAuthDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = 1313964810521821102L;
 	
-	public UserDetailsImpl(User user) {
+	public UserAuthDetailsImpl(User user) {
 		this.user = user;
 	}
 	

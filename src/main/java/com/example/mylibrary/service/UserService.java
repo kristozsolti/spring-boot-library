@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.mylibrary.entity.Role;
 import com.example.mylibrary.entity.User;
+import com.example.mylibrary.entity.UserInfo;
 import com.example.mylibrary.repository.RoleRepository;
 import com.example.mylibrary.repository.UserRepository;
 import com.example.mylibrary.shared.ResponseMessage;
@@ -45,7 +46,7 @@ public class UserService implements IUserService, UserDetailsService {
 			throw new UsernameNotFoundException(username);
 		}
 		
-		return new UserDetailsImpl(user);
+		return new UserAuthDetailsImpl(user);
 	}
 
 	@Override
@@ -81,8 +82,12 @@ public class UserService implements IUserService, UserDetailsService {
 		String hashedPassword = passwordEncoder.encode(password);
 		user.setPassword(hashedPassword);
 		
-		//Set defailt avatar image
-		user.setAvatarImg(DEFAULT_USER_AVATAR);
+		// Add a new, default UserInfo to user
+		UserInfo userInfo = new UserInfo();
+		userInfo.setAvatarImg(DEFAULT_USER_AVATAR);
+		userInfo.setUser(user);
+		
+		user.setUserInfo(userInfo);
 		
 		userRepo.save(user);
 		log.info("NEW USER IS REGISTERED -> " + user);
@@ -109,19 +114,18 @@ public class UserService implements IUserService, UserDetailsService {
 
 	@Override
 	public List<User> searchUsersByName(String userName) {
+		//TODO
 		// Input username has to be lowercase in order to search could be case insensitive
-		List<User> usersFound = userRepo.findAllByFullNameContainingIgnoreCase(userName.toLowerCase());
-		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
-		return usersFound;
+//		List<User> usersFound = userRepo.findAllByFullNameContainingIgnoreCase(userName.toLowerCase());
+//		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
+		return null;
 	}
 
 	@Override
 	public User getAuthenticatedUser() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
-		Long id = userDetails.getUserId();
+		Long userId = getAuthenticatedUserId();
 		
-		User authenticatedUser = userRepo.findById(id).get();
+		User authenticatedUser = userRepo.findById(userId).get();
 		
 		log.info("GET AUTHENTICATED USER -> " + authenticatedUser);
 		
@@ -129,9 +133,27 @@ public class UserService implements IUserService, UserDetailsService {
 	}
 
 	@Override
-	public void saveUserSettings(User user) {
-		log.debug("!!! SAVING USER SETTINGS -> " + user);
-//		userRepo.saveUserSettings();
+	public UserInfo getAuthenticatedUserInfo() {
+		UserInfo userInfo = getAuthenticatedUser().getUserInfo();
+		return userInfo;
+	}
+	
+	@Override
+	public void saveUserInfo(UserInfo userInfo) {
+		User authenticatedUser = getAuthenticatedUser();
+		userInfo.setUser(authenticatedUser);
+		authenticatedUser.setUserInfo(userInfo);
+		log.debug("!!! SAVING USER SETTINGS -> " + userInfo + authenticatedUser);
+		userRepo.save(authenticatedUser);
+	}
+	
+	private Long getAuthenticatedUserId() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserAuthDetailsImpl userDetails = (UserAuthDetailsImpl) auth.getPrincipal();
+		
+		Long userId = userDetails.getUserId();
+		
+		return userId;
 	}
 
 }

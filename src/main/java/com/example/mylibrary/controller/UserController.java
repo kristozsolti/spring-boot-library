@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mylibrary.entity.User;
+import com.example.mylibrary.entity.UserInfo;
 import com.example.mylibrary.service.IUserService;
 
 @Controller
@@ -63,13 +64,13 @@ public class UserController {
 	
 	@RequestMapping("/user-settings") 
 	public String userSettings(Model model) {
-		model.addAttribute("user", userService.getAuthenticatedUser());
+		model.addAttribute("userInfo", userService.getAuthenticatedUserInfo());
 		return "user/settings";
 	}
 	
 	@PostMapping("/user-settings/save")
-	public void saveSettings(@ModelAttribute User user, HttpServletResponse response) throws IOException {
-		userService.saveUserSettings(user);
+	public void saveSettings(@ModelAttribute UserInfo userInfo, HttpServletResponse response) throws IOException {
+		userService.saveUserInfo(userInfo);
 		response.sendRedirect("/user-settings?success");
 	}
 }
