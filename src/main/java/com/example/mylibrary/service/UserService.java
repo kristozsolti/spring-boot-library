@@ -49,11 +49,10 @@ public class UserService implements IUserService {
 
 	@Override
 	public List<User> searchUsersByName(String userName) {
-		//TODO
-		// Input username has to be lowercase in order to search could be case insensitive
-//		List<User> usersFound = userRepo.findAllByFullNameContainingIgnoreCase(userName.toLowerCase());
-//		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
-		return null;
+//		 Input username has to be lowercase in order to search could be case insensitive
+		List<User> usersFound = userRepo.findAllByUserInfoFullNameContainingIgnoreCase(userName.toLowerCase());
+		log.info("SEARCH USERS WITH NAME -> " + userName + " FOUND " + usersFound.size());
+		return usersFound;
 	}
 
 	@Override
