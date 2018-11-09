@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.mylibrary.entity.User;
 import com.example.mylibrary.entity.UserInfo;
 import com.example.mylibrary.service.IUserService;
 
@@ -25,23 +24,6 @@ public class UserController {
 		this.userService = userService;
 	}
 	private IUserService userService;
-
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
-	@RequestMapping("/registration")
-	public String registration(Model model) {
-		model.addAttribute("user", new User());
-		return "registration";
-	}
-	
-	@PostMapping("/register")
-	public void register(@ModelAttribute User user, HttpServletResponse response) throws IOException {
-		userService.registerUser(user);
-		response.sendRedirect("/login?registerSuccess");
-	}
 	
 	@RequestMapping("/users")
 	public String users(Model model) {
