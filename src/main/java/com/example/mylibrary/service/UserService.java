@@ -39,10 +39,9 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User findById(String userId) {
+	public User findById(Long userId) {
 		log.info("GET USER WITH ID -> " + userId);
-		Long id = Long.parseLong(userId);
-		User user = userRepo.findById(id).get();
+		User user = userRepo.findById(userId).get();
 		log.info("USER FOUND-> " + user);
 		
 		return user;

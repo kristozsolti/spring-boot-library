@@ -34,7 +34,7 @@ public class AuthorController {
 	
 	// Specific author page
 	@RequestMapping("/authors/{authorId}")
-	public String author(@PathVariable(value = "authorId") String authorId, Model model) {
+	public String author(@PathVariable Long authorId, Model model) {
 		model.addAttribute("author", authorService.getAuthorById(authorId));
 		return "author/author";
 	}

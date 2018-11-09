@@ -32,7 +32,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/users/{userId}")
-	public String user(@PathVariable String userId, Model model) {
+	public String user(@PathVariable Long userId, Model model) {
 		model.addAttribute("user", userService.findById(userId));
 		return "user/user";
 	}

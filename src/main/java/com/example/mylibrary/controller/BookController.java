@@ -37,7 +37,7 @@ public class BookController {
 
 	// Specific book page
 	@RequestMapping("/books/{bookId}")
-	public String book(@PathVariable String bookId, Model model) {
+	public String book(@PathVariable Long bookId, Model model) {
 		model.addAttribute("book", bookService.getBookById(bookId));
 		return "book/book";
 	}

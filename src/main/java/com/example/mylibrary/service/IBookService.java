@@ -8,7 +8,7 @@ public interface IBookService {
 
 	public List<Book> getAllBooks();
 
-	public Book getBookById(String bookId);
+	public Book getBookById(Long bookId);
 
 	public List<Book> searchBooksByTitle(String bookTitle);
 

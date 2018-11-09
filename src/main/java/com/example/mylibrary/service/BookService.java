@@ -27,9 +27,8 @@ public class BookService implements IBookService {
 	}
 
 	@Override
-	public Book getBookById(String bookId) {
-		Long id = Long.parseLong(bookId);
-		Book book = bookRepo.findById(id).get();
+	public Book getBookById(Long bookId) {
+		Book book = bookRepo.findById(bookId).get();
 		log.info("GET BOOK -> " + book.toString());
 		return book;
 	}

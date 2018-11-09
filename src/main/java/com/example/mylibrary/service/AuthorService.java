@@ -27,9 +27,8 @@ public class AuthorService implements IAuthorService {
 	}
 
 	@Override
-	public Author getAuthorById(String authorId) {
-		Long id = Long.parseLong(authorId);
-		Author author = authorRepo.findById(id).get();
+	public Author getAuthorById(Long authorId) {
+		Author author = authorRepo.findById(authorId).get();
 		log.info("GET AUTHOR -> " + author.toString());
 		return author;
 	}

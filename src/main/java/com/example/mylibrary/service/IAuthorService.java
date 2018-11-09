@@ -8,7 +8,7 @@ public interface IAuthorService {
 
 	public List<Author> getAllAuthors();
 
-	public Author getAuthorById(String authorId);
+	public Author getAuthorById(Long authorId);
 
 	public List<Author> searchAuthorsByName(String authorName);
 

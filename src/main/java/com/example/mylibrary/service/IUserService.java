@@ -12,7 +12,7 @@ public interface IUserService {
 
 	public List<User> getAllSimpleUsers();
 
-	public User findById(String userId);
+	public User findById(Long userId);
 
 	public List<User> searchUsersByName(String userName);
 

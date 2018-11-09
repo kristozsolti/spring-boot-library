@@ -30,7 +30,7 @@ public class BookRestController {
 	}
 	
 	@RequestMapping("/book/{id}")
-	public Book getBook(@PathVariable String id) {
+	public Book getBook(@PathVariable Long id) {
 		return bookService.getBookById(id);
 	}
 	
