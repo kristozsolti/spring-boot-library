@@ -31,17 +31,17 @@ INSERT INTO USERS (email, password) VALUES ('samu@test.com', '$2a$10$ZeE.SyLDjqV
 INSERT INTO USERS (email, password) VALUES ('jancsi@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
 INSERT INTO USERS (email, password) VALUES ('pacal@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
 
---USERS DETAILS
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (1, 'Test Admin', '/img/Profile_avatar_placeholder.png','MALE', 'I AM THE ADMIN. One of its kind, the manager of forgotten books and garbage collector of mad users!');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (2, 'Test User', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (3, 'Keresztes Gyula', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (4, 'Gipsz Jakab', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (5, 'Harap Magdolna', '/img/Profile_avatar_placeholder.png','FEMALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (6, 'Sonka Szelet', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (7, 'Sonka Szabolcs', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (8, 'Salamon Katalin', '/img/Profile_avatar_placeholder.png','FEMALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (9, 'Gipsz Jancsi', '/img/Profile_avatar_placeholder.png','MALE', '');
-INSERT INTO USERS_INFOS (user_id, full_name, avatar_img, gender, bio) VALUES (10, 'Rágós Pacal', '/img/Profile_avatar_placeholder.png', 'MALE', '');
+--USERS INFOS
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (1 , '2018-08-13', 'Test Admin', '/img/Profile_avatar_placeholder.png','MALE', 'I AM THE ADMIN. One of its kind, the manager of forgotten books and garbage collector of mad users!');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (2 , '2018-08-13', 'Test User', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (3 , '2018-08-13', 'Keresztes Gyula', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (4 , '2018-08-13', 'Gipsz Jakab', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (5 , '2018-08-13', 'Harap Magdolna', '/img/Profile_avatar_placeholder.png','FEMALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (6 , '2018-08-13', 'Sonka Szelet', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (7 , '2018-08-13', 'Sonka Szabolcs', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (8 , '2018-08-13', 'Salamon Katalin', '/img/Profile_avatar_placeholder.png','FEMALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (9 , '2018-08-13', 'Gipsz Jancsi', '/img/Profile_avatar_placeholder.png','MALE', '');
+INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (10, '2018-08-13', 'Rágós Pacal', '/img/Profile_avatar_placeholder.png', 'MALE', '');
 
 -- ROLES
 INSERT INTO ROLES (role) VALUES ('USER');

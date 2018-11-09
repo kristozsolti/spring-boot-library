@@ -1,5 +1,7 @@
 package com.example.mylibrary.service;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,7 @@ public class AuthService implements IAuthService, UserDetailsService {
 		
 		// Add a new, default UserInfo to user
 		UserInfo userInfo = new UserInfo();
+		userInfo.setJoined(new Date());
 		userInfo.setAvatarImg(DEFAULT_USER_AVATAR);
 		userInfo.setUser(user);
 		

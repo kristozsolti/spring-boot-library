@@ -26,6 +26,10 @@
 							<span>Name: </span>
 							<span th:text="${user.userInfo.fullName}">Name</span>
 						</h6>
+						<h6 class="card-subtitle mb-2">
+							<span>Joined: </span>
+							<span th:text="${#dates.format(user.userInfo.joined, 'yyyy.MM.dd')}">Name</span>
+						</h6>
 					</div>
 				</div>
 				

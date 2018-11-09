@@ -1,5 +1,7 @@
 package com.example.mylibrary.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.example.mylibrary.shared.UserGender;
 
@@ -24,6 +28,9 @@ public class UserInfo {
 	private String fullName;
 	private String avatarImg;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date joined;
+	
 	@OneToOne
     @JoinColumn(name = "user_id")
 	private User user;
@@ -34,7 +41,9 @@ public class UserInfo {
 	@Column(columnDefinition = "TEXT")
 	private String bio;
 	
-	public UserInfo() {}
+	public UserInfo() {
+		this.fullName = "";
+	}
 
 	public Long getId() {
 		return id;
@@ -58,6 +67,14 @@ public class UserInfo {
 
 	public void setAvatarImg(String avatarImg) {
 		this.avatarImg = avatarImg;
+	}
+
+	public Date getJoined() {
+		return joined;
+	}
+
+	public void setJoined(Date joined) {
+		this.joined = joined;
 	}
 
 	public User getUser() {
