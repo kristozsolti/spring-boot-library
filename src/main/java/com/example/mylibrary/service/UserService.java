@@ -74,6 +74,7 @@ public class UserService implements IUserService {
 	
 	@Override
 	public void saveUserInfo(UserInfo userInfo) {
+		//TODO NOT WORKING GOOD
 		User authenticatedUser = getAuthenticatedUser();
 		userInfo.setUser(authenticatedUser);
 		authenticatedUser.setUserInfo(userInfo);
@@ -88,6 +89,14 @@ public class UserService implements IUserService {
 		Long userId = userDetails.getUserId();
 		
 		return userId;
+	}
+
+	@Override
+	public List<User> searchUsersByEmail(String email) {
+//		 Input email has to be lowercase in order to search could be case insensitive
+		List<User> usersFound = userRepo.findAllByEmailContainingIgnoreCase(email.toLowerCase());
+		log.info("SEARCH USERS WITH EMAIL -> " + email + " FOUND " + usersFound.size());
+		return usersFound;
 	}
 
 }

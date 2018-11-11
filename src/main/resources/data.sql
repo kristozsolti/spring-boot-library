@@ -21,15 +21,15 @@ INSERT INTO BOOKS (title, author_id, isbn, number_of_pages, publicated_by, publi
 
 --USERS-- ADMIN
 INSERT INTO USERS (email, password) VALUES ('admin@test.com', '$2a$10$aeYJ8JQl7xVHSpn24akN1eKqPcObuUl5WXoUtC81vnYMYOaGsNjY6');
-INSERT INTO USERS (email, password) VALUES ('user@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('gyula@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('jakab@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('manyi@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('sonka@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('sonkasz@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('samu@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('jancsi@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
-INSERT INTO USERS (email, password) VALUES ('pacal@test.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('user@testgmail.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('gyula@testgmail.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('jakab@testgmail.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('manyi@testyahoo.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('sonka@testyahoo.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('sonkasz@testyahoo.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('samu@testoutlook.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('jancsi@testoutlook.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
+INSERT INTO USERS (email, password) VALUES ('pacal@testoutlook.com', '$2a$10$ZeE.SyLDjqVv3QThs2uNRubbKSYld.ssJDAonUndpxXmgdMrhczG.');
 
 --USERS INFOS
 INSERT INTO USERS_INFOS (user_id, joined, full_name, avatar_img, gender, bio) VALUES (1 , '2018-08-13', 'Test Admin', '/img/Profile_avatar_placeholder.png','MALE', 'I AM THE ADMIN. One of its kind, the manager of forgotten books and garbage collector of mad users!');

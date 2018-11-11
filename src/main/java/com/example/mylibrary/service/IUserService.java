@@ -22,4 +22,6 @@ public interface IUserService {
 
 	public void saveUserInfo(UserInfo userInfo);
 
+	public List<User> searchUsersByEmail(String searchValue);
+
 }

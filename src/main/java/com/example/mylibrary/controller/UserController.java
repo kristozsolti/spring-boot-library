@@ -25,6 +25,9 @@ public class UserController {
 	}
 	private IUserService userService;
 	
+	private static final String SEARCH_BY_EMAIL = "email";
+	private static final String SEARCH_BY_USERNAME = "username";
+	
 	@RequestMapping("/users")
 	public String users(Model model) {
 		model.addAttribute("users", userService.getAllSimpleUsers());
@@ -38,9 +41,17 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/search")
-	public String searchUsers(@RequestParam String userName, Model model) {
-		model.addAttribute("users", userService.searchUsersByName(userName));
-		model.addAttribute("searchValue", userName);
+	public String searchUsers(@RequestParam String searchValue, @RequestParam String searchBy, Model model) throws Exception {
+		
+		if(searchBy.equals(SEARCH_BY_EMAIL)) {
+			model.addAttribute("users", userService.searchUsersByEmail(searchValue));
+		} else if(searchBy.equals(SEARCH_BY_USERNAME)) {
+			model.addAttribute("users", userService.searchUsersByName(searchValue));
+		} else {
+			throw new Exception("NO SEARCH_BY CRITERIA SELECTED");
+		}
+		
+		model.addAttribute("searchValue", searchValue);
 		return "user/users";
 	}
 	

@@ -26,4 +26,11 @@ public interface UserRepository extends CrudRepository<User, Long>{
 			+ "AND lower(ui.fullName) LIKE %?1%")
 	public List<User> findAllByUserInfoFullNameContainingIgnoreCase(String userName);
 
+	// Have to ignore ADMIN from the result list
+	@Query(value = "SELECT u "
+			+ "FROM User u "
+			+ "JOIN u.roles r ON r.role = 'USER' "
+			+ "AND lower(u.email) LIKE %?1%")
+	public List<User> findAllByEmailContainingIgnoreCase(String email);
+
 }
