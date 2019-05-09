@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.mylibrary.entity.User;
 import com.example.mylibrary.service.IAuthService;
+import com.example.mylibrary.shared.ResponseMessage;
 
 @Controller
 public class AuthController {
@@ -20,23 +21,29 @@ public class AuthController {
 	public AuthController(IAuthService authService) {
 		this.authService = authService;
 	}
+
 	private IAuthService authService;
 
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("user", new User());
 		return "registration";
 	}
-	
+
 	@PostMapping("/register")
 	public void register(@ModelAttribute User user, HttpServletResponse response) throws IOException {
-		authService.registerUser(user);
-		response.sendRedirect("/login?registerSuccess");
+		ResponseMessage respMsg = authService.registerUser(user);
+
+		if (respMsg.equals(ResponseMessage.success)) {
+			response.sendRedirect("/login?registerSuccess");
+		} else if (respMsg.equals(ResponseMessage.error)) {
+			response.sendRedirect("/registration?userExists");
+		}
 	}
-	
+
 }

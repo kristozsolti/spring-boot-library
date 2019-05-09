@@ -14,7 +14,7 @@
 	<div layout:fragment="pageContent">
 
 		<!-- TOP RATED BOOKS -->
-		<div class="card border-primary">
+		<div id="top-rated-books" class="card border-primary">
 			<div class="card-header">
 				<i class="fas fa-book"></i>
 				<i class="fas fa-sort-amount-up"></i> Top rated books
@@ -70,7 +70,7 @@
 		<hr />
 
 		<!-- TOP AUTHORS -->
-		<div class="card border-success">
+		<div id="top-rated-authors" class="card border-success">
 			<div class="card-header">
 				<i class="fas fa-chalkboard-teacher"></i>
 				<i class="fas fa-sort-amount-up"></i> Top rated authors
@@ -112,7 +112,7 @@
 						</div>
 
 						<div class="card-footer">
-							<a th:href="@{/books/{authorId}(authorId=${author.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
+							<a th:href="@{/authors/{authorId}(authorId=${author.id})}" class="card-link"> <i class="fas fa-chevron-circle-right"></i>
 								View details
 							</a>
 						</div>

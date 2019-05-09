@@ -15,9 +15,9 @@
 		</div>
 		<div class="d-flex justify-content-center">
 			<form class="form-inline my-2 my-lg-0" th:action="@{/authors/search}" th:method="get">
-				<input class="form-control mr-sm-2" name="authorName" th:value="${searchValue}" type="search" placeholder="Enter author name"
+				<input id="author-name-search" class="form-control mr-sm-2" name="authorName" th:value="${searchValue}" type="search" placeholder="Enter author name"
 				 aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+				<button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">
 					<i class="fas fa-search"></i> Search
 				</button>
 				<a th:href="@{/authors}" class="btn btn-outline-danger m-2">
@@ -46,7 +46,7 @@
 							<img th:src="${author.photoUrl}" alt="Author Cover Photo" width="100%" />
 						</div>
 						<div class="col-sm-8">
-							<h5 class="card-title" th:text="${author.name}">Author Name</h5>
+							<h5 id="author-name" class="card-title" th:text="${author.name}">Author Name</h5>
 							<hr />
 							<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">
 								Date of birth

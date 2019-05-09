@@ -30,7 +30,7 @@ public class AuthService implements IAuthService, UserDetailsService {
 	private UserRepository userRepo;
 	private RoleRepository roleRepo;
 	
-	private static final Logger log = LoggerFactory.getLogger(AuthorService.class);
+	private static final Logger log = LoggerFactory.getLogger(AuthService.class);
 	private static final String USER_ROLE = Roles.USER.toString();
 	
 	@Value("${user.default.avatar}")

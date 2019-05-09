@@ -45,7 +45,7 @@
 			<i class="fas fa-reply"></i> Reply
 		</a>
 		<form class="form-inline" th:action="@{/admin/contact-messages/{msgId}/delete(msgId = ${message.id})}" th:method="delete">
-			<button class="btn btn-outline-danger float-right" type="submit">
+			<button id="delete-message-button" class="btn btn-outline-danger float-right" type="submit">
 				<i class="fas fa-trash-alt"></i> Delete
 			</button>
 		</form>
