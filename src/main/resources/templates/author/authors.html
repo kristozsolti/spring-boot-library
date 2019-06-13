@@ -51,6 +51,11 @@
 							<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">
 								Date of birth
 							</h6>
+							<h6 class="card-subtitle mb-2 text-muted">
+								<span>Rating: </span>
+								<span th:text="${author.rating}">Rating </span>
+								<i class="fas fa-star"></i>
+							</h6>
 						</div>
 					</div>
 				
