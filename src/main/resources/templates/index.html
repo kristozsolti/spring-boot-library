@@ -30,17 +30,17 @@
 								</div>
 								<div class="col-sm-8">
 									<h5 class="card-title" th:text="${book.title}">Book Title</h5>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-12">
 									<hr/>
 									<h6 class="card-subtitle mb-2" th:text="${book.author.name}">Book Author name</h6>
 									<h6 class="card-subtitle mb-2 text-muted">
 										<span th:text="${book.publicatedBy}">Publicated By</span> -
 										<span th:text="${book.publicationYear}">Publicated In</span>
 									</h6>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-12">
 									<hr/>
 									<!-- Show only the first 150 characters of the book's description -->
 									<div th:if="${#strings.length(book.description) <= 99}">
