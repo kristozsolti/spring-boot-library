@@ -6,7 +6,6 @@
 	padding: 0.5em;
 }
 
-.crop {
-  overflow: hidden;
-  color: #28a745;
+.fa-star {
+	color: #28a745;
 }

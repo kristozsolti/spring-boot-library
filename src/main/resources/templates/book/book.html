@@ -30,16 +30,9 @@
 					<hr />
 					<div class="book-information row">
 						<div class="col-sm-4 stars-container" data-toggle="tooltip" data-placement="top" th:title="'Rating: ' + ${book.rating}">
-						<span>Rating: </span> 
-							<div class="crop" th:style="'width:' + ${book.rating * 106 / 5} + 'px;'">
-								<div style="width: 106px">
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</div>
-							</div>
+							<span>Rating: </span>
+							<span th:text="${book.rating}">Rating </span>
+							<i class="fas fa-star"></i>
 						</div>
 						<div class="col-sm-4">ISBN: <span th:text="${book.isbn}">ISBN</span></div>
 						<div class="col-sm-4">Pages: <span th:text="${book.numberOfPages}">Number of pages</span></div>
