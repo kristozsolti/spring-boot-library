@@ -87,7 +87,8 @@
 								<div class="col-sm-8">
 									<h5 class="card-title" th:text="${author.name}">Author Name</h5>
 									<hr />
-									<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">
+									<!-- <h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}"> -->
+									<h6 class="card-subtitle mb-2 text-muted" th:text="${author.dateOfBirth}">
 										Date of birth
 									</h6>
 								</div>

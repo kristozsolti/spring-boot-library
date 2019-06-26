@@ -1,6 +1,5 @@
 package com.example.mylibrary.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -24,8 +21,9 @@ public class Author {
 	private Long id;
 	private String name;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dateOfBirth;
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+//	private Date dateOfBirth;
+	private String dateOfBirth;
 	private String photoUrl;
 	
 	@Column(columnDefinition = "TEXT")
@@ -54,11 +52,11 @@ public class Author {
 		this.name = name;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

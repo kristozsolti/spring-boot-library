@@ -48,7 +48,8 @@
 						<div class="col-sm-8">
 							<h5 id="author-name" class="card-title" th:text="${author.name}">Author Name</h5>
 							<hr />
-							<h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}">
+							<!-- <h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(author.dateOfBirth, 'YYYY-MM-DD')}"> -->
+							<h6 class="card-subtitle mb-2 text-muted" th:text="${author.dateOfBirth}">
 								Date of birth
 							</h6>
 							<h6 class="card-subtitle mb-2 text-muted">
@@ -78,7 +79,7 @@
 				</div>
 				
 				<div class="card-footer">
-					<a th:href="@{/authors/{authorId}(authorId=${author.id})}" class="card-link">
+					<a th:id="${author.name}" th:href="@{/authors/{authorId}(authorId=${author.id})}" class="card-link">
 						<i class="fas fa-chevron-circle-right"></i> View details
 					</a>
 				</div>

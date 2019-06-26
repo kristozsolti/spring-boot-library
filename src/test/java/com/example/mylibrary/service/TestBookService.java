@@ -5,7 +5,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -56,14 +55,14 @@ public class TestBookService {
 		a1.setName("Author1");
 		a1.setRating(3.6);
 		a1.setWrittenBooks(new ArrayList<Book>());
-		a1.setDateOfBirth(new Date());
+//		a1.setDateOfBirth(new Date());
 		a1.setBio("Biography");
 		
 		a2.setId((long) 2);
 		a2.setName("Author2");
 		a2.setRating(3.9);
 		a2.setWrittenBooks(new ArrayList<Book>());
-		a2.setDateOfBirth(new Date());
+//		a2.setDateOfBirth(new Date());
 		a2.setBio("Biography 2");
 	}
 	
